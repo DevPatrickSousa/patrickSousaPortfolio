@@ -1,4 +1,13 @@
-# base
+<div align="center">
+<H1 text-align: center;">PATRICK SOUSA PORTFOLIO </H1>
+</div>
+
+<div align="center">
+
+<H2>PROTOTYPE OF PROJECT </H2>
+https://www.figma.com/file/p5AzVZ4E9qA2eWVvzVk4fw/portfolio-4-real?node-id=0%3A1&t=OhewC6b42HCCKWJP-1
+</div>
+<hr> 
 
 ## Project setup
 
@@ -26,32 +35,4 @@ npm run dev
 pnpm dev
 ```
 
-### Compiles and minifies for production
 
-```
-# yarn
-yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
-```
-
-### Lints and fixes files
-
-```
-# yarn
-yarn lint
-
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://vitejs.dev/config/).
