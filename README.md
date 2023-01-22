@@ -9,6 +9,12 @@ https://www.figma.com/file/p5AzVZ4E9qA2eWVvzVk4fw/portfolio-4-real?node-id=0%3A1
 </div>
 <hr> 
 
+<div align="center">
+<h3>Using Vue.js + Vuetify </h3>
+</div>
+
+<hr> 
+
 ## Project setup
 
 ```
