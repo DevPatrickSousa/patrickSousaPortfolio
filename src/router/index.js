@@ -1,8 +1,8 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-import AboutMe from '@/views/AboutMe.vue'
+import aboutMe from '@/views/aboutMe'
 import Contact from '@/views/Contact.vue'
-import Home from '@/views/Home.vue'
+
 const routes = [
   {
 
@@ -25,9 +25,9 @@ const routes = [
   
   
   {
-    path: '/aboutMe',
+    path: '/aboutme',
     name:'aboutMe',
-    component: AboutMe
+    component: aboutMe
   },
   {
     path: '/contact',
