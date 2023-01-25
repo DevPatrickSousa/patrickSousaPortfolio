@@ -21,6 +21,9 @@ const routes = [
     ],
 
   },
+  
+  
+  
   {
     path: '/aboutMe',
     name:'aboutMe',
