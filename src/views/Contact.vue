@@ -2,11 +2,9 @@
 
   <v-app>
     <menuComponent />
-    <v-main class=" d-flex justify-center align-center  bg-grey-darken-4 fill-height">
-      <div class="text-center">
-        <span>In progress...</span>
-      </div>
-    </v-main>
+
+    <ContactComponent />
+
     <footerComponent />
   </v-app>
 
@@ -14,5 +12,6 @@
 
 <script setup>
 import menuComponent from '@/components/menuComponent.vue';
-import footerComponent from '@/components/footerComponent.vue'
+import footerComponent from '@/components/footerComponent.vue';
+import ContactComponent from '@/components/ContactComponent.vue'
 </script>
