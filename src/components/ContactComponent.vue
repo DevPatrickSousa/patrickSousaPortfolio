@@ -13,12 +13,14 @@
                     <span class="mx-7">patrickseven22@hotmail.com</span>
                 </div>
 
-
-
-
                 <div class="d-flex justify-center align-center text-center">
-                    <v-card class="d-flex mt-16 rounded-xl  justify-center align-center  " width="900" height="510" variant="outlined">
-                        In progress...
+                    <v-card class="d-flex mt-16 rounded-xl  justify-center align-center  " width="900" height="510"
+                        variant="outlined">
+                        <form action="https://formsubmit.co/patrickseven22@hotmail.com" method="POST">
+                            <v-responsive class="mx-auto" min-width="700">
+                                <formComponent/>
+                            </v-responsive>
+                        </form>
                     </v-card>
                 </div>
             </v-card>
@@ -34,8 +36,8 @@
     </v-main>
 </template>
 
-<script>
-
+<script setup>
+import formComponent from './formComponent.vue';
 </script>
 
 <style>
