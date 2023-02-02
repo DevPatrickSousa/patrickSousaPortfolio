@@ -5,9 +5,9 @@
       <v-divider class="mt-2 mb-2" ength="650px"></v-divider>
       <span class="myFont2 ">Web developer</span>
       <v-divider class="mt-2" length="650px"></v-divider>
-      <buttonComponent>
+      <buttonComponentWithTo/>
 
-      </buttonComponent>
+      
     </div>
 
 
@@ -19,7 +19,7 @@
 <script setup>
   //
 
-  import buttonComponent from './buttonComponent.vue';
+  import buttonComponentWithTo from './buttonComponentWithTo.vue';
 </script>
 
 <style>
