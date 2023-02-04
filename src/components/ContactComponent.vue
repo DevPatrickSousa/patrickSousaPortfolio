@@ -5,7 +5,7 @@
         </div>
 
         <div class="d-flex justify-center text-center ">
-            <v-card class="mt-16 rounded-xl" color="black" variant="outlined" width="1500" height="700">
+            <v-card class="mt-16 rounded-xl" width="1500" height="700" color="black" :style="'border: 1px solid white'">
                 <div class="mt-10">
                     <img src="/src/assets/whatsapp.ico" alt="whatsApp" ALIGN=middle>
                     <span class="mx-7 mt-5 text-white">55 (11)94364-6430</span>

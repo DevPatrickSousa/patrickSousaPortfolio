@@ -2,116 +2,144 @@
     <v-main class="bg-grey-darken-4 fill-height ">
 
         
-        
-        
-
-        <div id="container" class="text-center">
+        <div id="mainContainer" class="d-flex " >
+            <v-card class="" height="850" color="black" :style="'border: 1px solid white'">
+            <div id="leftContainer" class="d-flex flex-column mx-7 ">
+                
             
-            
-        <div id="imgPlusButton" class=" mx-9  mt-16">
-            
-        <v-img
-        id="me"
-        width="270"
-        height="260"
-        :aspect-ratio="1"
-        src="/src/assets/patrickSousa.jpg"
-        cover class="ml-16">
-        </v-img>
-
-        
-
-        <div id="descriptionSpan" class="text-justify ">
-            <div id="button" class="my-5 ">
-                <buttonComponent />
+            <div id="imgStyle">
+            <v-img
+            id="me"
+            width="270"
+            height="260"
+            :aspect-ratio="1"
+            src="/src/assets/patrickSousa.jpg"
+            cover>
+            </v-img>
             </div>
-
-        <span>
-        Web development enthusiast, I've always had a certain affinity and curiosity in how a site was made, after joining the IT area,
-        I already knew that WEB development would be the path i wanted to take and here i'm. Finally, I've been deepening in HTML, CSS, JavaScript and Vue.js.
-        </span>
-        
-        
-
-
-        <div id="skillsSpan" class="text-center my-3">
-            <span>Skills</span>
-        </div>
-        
-
-     <div>
-        <v-row align="start" no-gutters style="max-height: 408px;">
-        <v-col>
-            <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/html-5.png"  class=" my-3 "></v-img>
-            <ratingComponentThree/>
-        </v-col>
-        <v-spacer></v-spacer>
-        <v-col>
-            <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/css3.png"  class=" my-3 "></v-img>
-            <ratingComponentThree/>
-        </v-col>
-        <v-spacer></v-spacer>
-        <v-col>
-            <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/javascript.png"  class=" my-3 "></v-img>
-            <ratingComponentTwo/>
-        </v-col>
-        <v-spacer></v-spacer>
-        <v-col>
-            <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/vuejs.png"  class=" my-3 "></v-img>
-            <ratingComponentTwo/>
-        </v-col>
-
-      </v-row>
-
-      <v-row align="start" no-gutters style="max-height: 408px;">
-        <v-col>
-            <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/react.png"  class=" my-3 "></v-img>
-            <ratingComponentTwo/>
-        </v-col>
-        <v-spacer></v-spacer>
-        <v-col>
-            <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/firebase.png"  class=" my-3 "></v-img>
-            <ratingComponentTwo/>
-        </v-col>
-        <v-spacer></v-spacer>
-        <v-col>
-            <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/github.png"  class=" my-3 "></v-img>
-            <ratingComponentTwo/>
-        </v-col>
-        <v-spacer></v-spacer>
-        <v-col>
-            <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/sql.png"  class=" my-3 "></v-img>
-            <ratingComponentTwo/>
-        </v-col>
-
-      </v-row>
-      
-     </div>
-      
-     
-      
-      
+            
+            <div id="button" class="my-5  ">
+                <buttonComponentDownload buttonText='Download CV'/>
+            </div>
             
             
-        
-        
-        
-    </div>
-        </div>
-        
-    <br>
-        
-        
-        </div>
-        
+    
+            
+    
+            <div id="descriptionSpan" class=" ml-3">
+             
+                <span>
+            Web development enthusiast, I've always had a certain affinity and curiosity in how a site was made, after joining the IT area,
+            I already knew that WEB development would be the path i wanted to take and here i'm. Finally, I've been deepening in HTML, CSS, JavaScript and Vue.js.
+                </span>
+             
+            
+            </div>
+            
+    
+            <div id="skillsSpan" class="text-center my-3">
+                <span>Skills</span>
+            </div>
+            
+            
 
+         <div id="icons" class="text-center my-3 ml-3">
+            <v-row align="start" no-gutters style="max-height: 408px;">
+            <v-col>
+                <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/html-5.png"  class=" my-3 "></v-img>
+                <ratingComponentThree/>
+            </v-col>
+            <v-spacer></v-spacer>
+            <v-col>
+                <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/css3.png"  class=" my-3 "></v-img>
+                <ratingComponentThree/>
+            </v-col>
+            <v-spacer></v-spacer>
+            <v-col>
+                <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/javascript.png"  class=" my-3 "></v-img>
+                <ratingComponentTwo/>
+            </v-col>
+            <v-spacer></v-spacer>
+            <v-col>
+                <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/vuejs.png"  class=" my-3 "></v-img>
+                <ratingComponentTwo/>
+            </v-col>
+    
+          </v-row>
+    
+          <v-row align="start" no-gutters style="max-height: 408px;">
+            <v-col>
+                <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/react.png"  class=" my-3 "></v-img>
+                <ratingComponentTwo/>
+            </v-col>
+            <v-spacer></v-spacer>
+            <v-col>
+                <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/firebase.png"  class=" my-3 "></v-img>
+                <ratingComponentTwo/>
+            </v-col>
+            <v-spacer></v-spacer>
+            <v-col>
+                <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/github.png"  class=" my-3 "></v-img>
+                <ratingComponentTwo/>
+            </v-col>
+            <v-spacer></v-spacer>
+            <v-col>
+                <v-img width="24" height="24" :aspect-ratio="1" src="/src/assets/sql.png"  class=" my-3 "></v-img>
+                <ratingComponentTwo/>
+            </v-col>
+    
+          </v-row>
+          
+         </div>
+        
+         </div>
+        </v-card>
+
+         <div class="d-flex justify-center align-center mt-14">
+            <div class="text-center">
+                <div id="aboutMeText" class="ml-6 mb-14">
+                    <span>About me</span>
+                </div>
+         <div id="cardContainer" class="d-flex justify-end align-center text-center ml-16">
+            <v-card  class="d-flex justify-center align-center text-center mr-6 rounded-xl" width="280px" height="455px" color="black" :style="'border: 1px solid white'">
+                <v-card-text>
+                    <span class="text-white">EDUCATION</span>  
+                </v-card-text>
+            </v-card>
+
+            <v-card class="d-flex justify-center align-center text-center mr-6 rounded-xl" width="280px" height="455px" color="black" :style="'border: 1px solid white'">
+                <v-card-text>
+                    <span>EXPERIENCE</span>  
+                </v-card-text>
+            </v-card>
+            <v-card class="d-flex justify-center align-center text-center mr-6 rounded-xl" width="280px" height="455px" color="black" :style="'border: 1px solid white'">
+                <v-card-text>
+                    <span>LANGUAGES</span>   
+                </v-card-text>
+            </v-card>
+         </div>
+         <div id="cardContainer" class="d-flex justify-end align-center ml-16 mx-2">
+          <div class="mt-4 ml-14"><buttonComponentDialog  dialogText='IDK' buttonText='see more'/></div>
+          <div  class="mt-4 ml-14"><buttonComponentDialog dialogText='IDK1' buttonText='see more'/></div>
+          <div  class="mt-4 ml-13 mr-7"><buttonComponentDialog dialogText='IDK2' buttonText='see more'/></div>
+         </div>
+         <div id="githubText" class="d-flex justify-center align-center mt-14 text-center ml-16">
+            <a href="https://www.github.com/DevPatrickSousa" target="_blank">Click here to see more details on my github.</a>
+         </div>
+        </div>
+        
+        </div>
+        
+         
+        </div>
     </v-main>
-
+    
 
 </template>
 
 <script setup>
-import buttonComponent from './buttonComponent.vue';
+import buttonComponentDownload from './buttonComponentDownload.vue';
+import buttonComponentDialog from './buttonComponentDialog.vue';
 import ratingComponentThree from './ratingComponentThree.vue';
 import ratingComponentTwo from './ratingComponentTwo.vue';
 </script>
@@ -121,10 +149,6 @@ import ratingComponentTwo from './ratingComponentTwo.vue';
 #me {
   border-radius: 130px;
 }
-#descriptionSpan{
-    max-width: 408px;
-    max-height: 136px;
-}
 #skillsSpan{
     max-width: 408px;
     
@@ -133,8 +157,53 @@ import ratingComponentTwo from './ratingComponentTwo.vue';
     width: 800px;
 }
 #button{
-    margin-left: 75px;
+    margin-left: 92px;
+    max-width: fit-content;
+}
+#icons{
+    max-width: 408px;
+}
+#descriptionSpan{
+    max-width: 408px;
+    max-height: 200px;
+}
+#mainContainer{
+    max-height: 968px;
+}
+#leftContainer{
+    margin-top: 100px;
+    max-height: 500px;
+    max-width: 100vw;
 }
 
+#cardContainer{
+    position: relative;
+    left: 200px;
+}
+
+#aboutMeText{
+    position: relative;
+    left: 200px;
+}
+#imgPlusButton{
+    max-width: 408px;
+}
+#imgStyle{
+    margin-left: 92px;
+}
+#githubText{
+    position: relative;
+    left: 200px;
+}
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+a:hover{
+    -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+}
 
 </style>
