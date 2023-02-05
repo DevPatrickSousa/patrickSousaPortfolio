@@ -1,13 +1,14 @@
 <template>
-    <v-hover  v-slot="{ isHovering, props }" open-delay="150">
+    <v-hover   v-slot="{ isHovering, props }" open-delay="150">
             <v-btn color="black" v-bind="props" :elevation="isHovering ? 8 : 2" :class="{ 'on-hover': isHovering }" size="small"
-              rounded="pill"  class="mt-4" width="250px" height="34px" variant="outlined" to="/aboutme">
-              <span class="text-white">{{ spanText }}</span>
-              <v-dialog v-model="dialog" activator="parent">
-        <v-card height="300">
+              rounded="pill" class="mt-4" width="250px" height="34px" variant="outlined" to="/aboutme">
+              <span class="text-white" >{{ buttonText }}</span>
+              <v-dialog v-model="dialog" activator="parent" transition="dialog-bottom-transition" overlay-color="black">
+        <v-card height="127" >
           <v-card-text>
             <div class="d-flex justify-center align-center text-center">
-                <span>{{ dialogText }}</span>
+                <span ><strong>{{ dialogText0 }} <br> {{ dialogText1 }}</strong></span>
+                
             </div>
             
           </v-card-text>
@@ -28,12 +29,13 @@
     export default{
         data(){
             return{
-                spanText: 'see more',
-                dialog: false
+              buttonText: 'see more',
+              dialog: false
             }
         },
         props:{
-            dialogText: String
+            dialogText0: String,
+            dialogText1: String
         }
         
     }

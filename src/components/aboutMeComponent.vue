@@ -3,7 +3,7 @@
 
         
         <div id="mainContainer" class="d-flex " >
-            <v-card class="" height="850" color="black" :style="'border: 1px solid white'">
+            <v-card class="" height="850" width="500" color="black" :style="'border: 1px solid white'" elevation="10">
             <div id="leftContainer" class="d-flex flex-column mx-7 ">
                 
             
@@ -14,11 +14,12 @@
             height="260"
             :aspect-ratio="1"
             src="/src/assets/patrickSousa.jpg"
-            cover>
+            cover
+            >
             </v-img>
             </div>
             
-            <div id="button" class="my-5  ">
+            <div id="button" class="my-5 d-flex justify-center ">
                 <buttonComponentDownload buttonText='Download CV'/>
             </div>
             
@@ -100,28 +101,43 @@
                 <div id="aboutMeText" class="ml-6 mb-14">
                     <span>About me</span>
                 </div>
-         <div id="cardContainer" class="d-flex justify-end align-center text-center ml-16">
-            <v-card  class="d-flex justify-center align-center text-center mr-6 rounded-xl" width="280px" height="455px" color="black" :style="'border: 1px solid white'">
+         <div id="cardContainer" class="d-flex justify-end align-center text-center ml-16" >
+            <v-card  class="d-flex justify-center align-center text-center mr-6 rounded-xl" width="280px" height="455px" color="black" :style="'border: 1px solid white'" elevation="6">
                 <v-card-text>
                     <span class="text-white">EDUCATION</span>  
                 </v-card-text>
             </v-card>
 
-            <v-card class="d-flex justify-center align-center text-center mr-6 rounded-xl" width="280px" height="455px" color="black" :style="'border: 1px solid white'">
+            <v-card class="d-flex justify-center align-center text-center mr-6 rounded-xl" width="280px" height="455px" color="black" :style="'border: 1px solid white'" elevation="6">
                 <v-card-text>
                     <span>EXPERIENCE</span>  
                 </v-card-text>
             </v-card>
-            <v-card class="d-flex justify-center align-center text-center mr-6 rounded-xl" width="280px" height="455px" color="black" :style="'border: 1px solid white'">
+            <v-card class="d-flex justify-center align-center text-center mr-6 rounded-xl" width="280px" height="455px" color="black" :style="'border: 1px solid white'" elevation="6">
                 <v-card-text>
                     <span>LANGUAGES</span>   
                 </v-card-text>
             </v-card>
          </div>
          <div id="cardContainer" class="d-flex justify-end align-center ml-16 mx-2">
-          <div class="mt-4 ml-14"><buttonComponentDialog  dialogText='IDK' buttonText='see more'/></div>
-          <div  class="mt-4 ml-14"><buttonComponentDialog dialogText='IDK1' buttonText='see more'/></div>
-          <div  class="mt-4 ml-13 mr-7"><buttonComponentDialog dialogText='IDK2' buttonText='see more'/></div>
+            <div class="mt-4 ml-14">
+            <buttonComponentDialog
+            dialogText0='FATEC - Analysis and Development of Systems - 2020/present'
+            dialogText1='SENAI - Electromechanical Technician - 2018/2019'
+            />
+            </div>
+            <div class="mt-4 ml-14">
+            <buttonComponentDialog 
+            dialogText0='Prefeitura de Santana de Parnaíba - Network Infrastructure internship - 2022/2022'
+            dialogText1='Prefeitura de Santana de Parnaíba - Service Desk internship - 2021/2022'                                      
+            />
+            </div>
+            <div class="mt-4 ml-13 mr-7">
+            <buttonComponentDialog
+            dialogText0='Portuguese - Native'
+            dialogText1='English - Intermediary'  
+            />
+            </div>
          </div>
          <div id="githubText" class="d-flex justify-center align-center mt-14 text-center ml-16">
             <a href="https://www.github.com/DevPatrickSousa" target="_blank">Click here to see more details on my github.</a>
@@ -138,16 +154,21 @@
 </template>
 
 <script setup>
+
 import buttonComponentDownload from './buttonComponentDownload.vue';
 import buttonComponentDialog from './buttonComponentDialog.vue';
 import ratingComponentThree from './ratingComponentThree.vue';
 import ratingComponentTwo from './ratingComponentTwo.vue';
+
+
 </script>
+
 
 
 <style>
 #me {
   border-radius: 130px;
+  max-width: 408px;
 }
 #skillsSpan{
     max-width: 408px;
@@ -157,8 +178,8 @@ import ratingComponentTwo from './ratingComponentTwo.vue';
     width: 800px;
 }
 #button{
-    margin-left: 92px;
-    max-width: fit-content;
+    
+    max-width: 408px;
 }
 #icons{
     max-width: 408px;
@@ -189,7 +210,8 @@ import ratingComponentTwo from './ratingComponentTwo.vue';
     max-width: 408px;
 }
 #imgStyle{
-    margin-left: 92px;
+    max-width: 408px;
+    margin-left: 74px;
 }
 #githubText{
     position: relative;

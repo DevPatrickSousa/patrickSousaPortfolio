@@ -27,7 +27,7 @@
 
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="http://localhost:3000/contact">
-
+      
       <v-textarea 
       :rules="textRules"
       class="my-3 text-white"

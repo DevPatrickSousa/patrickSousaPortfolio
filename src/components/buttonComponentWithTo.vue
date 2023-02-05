@@ -2,7 +2,7 @@
 <v-hover  v-slot="{ isHovering, props }" open-delay="150">
         <v-btn color="black" v-bind="props" :elevation="isHovering ? 8 : 2" :class="{ 'on-hover': isHovering }" size="small"
           rounded="pill"  class="mt-4" width="167px" height="34px" variant="outlined" to="/aboutme">
-          <span class="text-white">{{ spanText }}</span>
+          <span  class="text-white">{{ buttonText }}</span>
           
         </v-btn>
       </v-hover>
@@ -15,7 +15,7 @@
 export default{
     data(){
         return{
-            spanText: 'see more'
+            buttonText: 'see more'
         }
     }
     
