@@ -1,7 +1,7 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 import Contact from '@/views/Contact.vue'
-import aboutMe from '@/views/aboutMe.vue'
+import About from '@/views/About.vue'
 const routes = [
   {
     path: '/',
@@ -25,8 +25,8 @@ const routes = [
   },
   {
     path: '/aboutme',
-    name:'aboutMe',
-    component: aboutMe,
+    name:'about',
+    component: About,
     props: true,
   },
   
