@@ -1,7 +1,11 @@
 <template>
+    <v-container class="fill-height ">
+    <v-responsive class="d-flex align-center text-center fill-height ">
+        <v-row class="d-flex align-center justify-center">
+            <v-col cols="auto">
     <v-hover   v-slot="{ isHovering, props }" open-delay="150">
             <v-btn color="black" v-bind="props" :elevation="isHovering ? 8 : 2" :class="{ 'on-hover': isHovering }" size="small"
-              rounded="pill" class="mt-4" width="250px" height="34px" variant="outlined" to="/aboutme">
+              rounded="pill"  width="210px" height="30px" variant="outlined" to="/aboutme">
               <span class="text-white" >{{ buttonText }}</span>
               <v-dialog v-model="dialog" activator="parent" transition="dialog-bottom-transition" overlay-color="black">
         <v-card height="127" >
@@ -19,7 +23,12 @@
       </v-dialog>
               
             </v-btn>
+            
           </v-hover>
+        </v-col>
+        </v-row>
+        </v-responsive>
+  </v-container>
     </template>
     
     

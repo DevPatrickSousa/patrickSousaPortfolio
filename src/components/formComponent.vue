@@ -1,44 +1,45 @@
-<template>
-  <v-form fast-fail ref="form" action="https://formsubmit.co/patrickseven22@hotmail.com" method="POST">
-    <v-responsive class="mx-auto" min-width="700">
+<template >
+    <v-container class="fill-height ">
+      <v-responsive class="d-flex align-center text-center fill-height ">
 
-      <v-text-field 
-      :rules="textRules"
-      class="my-3 text-white"
-      hide-details="auto"
-      label="Name"
-      type="text"
-      name="name"
-      clearable 
-      required>
-      </v-text-field>
+        <v-form fast-fail ref="form" action="https://formsubmit.co/patrickseven22@hotmail.com" method="POST">
+    <v-text-field 
+    :rules="textRules"
+    class="my-3 text-white"
+    hide-details="auto"
+    label="Name"
+    type="text"
+    name="name"
+    clearable 
+    required>
+    </v-text-field>
 
-      <v-text-field 
-      :rules="emailRules"
-      class="my-3 text-white"
-      hide-details="auto"
-      label="Email"
-      type="email"
-      name="email"
-      clearable
-      placeholder="example@hotmail.com"
-      required>
-      </v-text-field>
+    <v-text-field 
+    :rules="emailRules"
+    class="my-3 text-white"
+    hide-details="auto"
+    label="Email"
+    type="email"
+    name="email"
+    clearable
+    placeholder="example@hotmail.com"
+    required>
+    </v-text-field>
 
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="http://localhost:3000/contact">
-      
-      <v-textarea 
-      :rules="textRules"
-      class="my-3 text-white"
-      label="Message"
-      name="message"
-      clearable
-      required>
-      </v-textarea>
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="http://localhost:3000/contact">
+    
+    <v-textarea 
+    :rules="textRules"
+    class="my-3 text-white"
+    label="Message"
+    name="message"
+    clearable
+    required>
+    </v-textarea>
 
 
-      <v-btn 
+    <v-btn 
       size="small"
       rounded="pill"
       color="black"
@@ -51,16 +52,16 @@
       <span class="text-white">{{ spanText }}</span>
       </v-btn>
 
-      <v-snackbar v-model="snackbar" color="success">
-        <span class="text-white text-center"><strong>{{ text }}</strong></span>
-      </v-snackbar>
-    </v-responsive>
-  </v-form>
-
-</template>
-
-
-<script>
+    <v-snackbar v-model="snackbar" color="success">
+      <span class="text-white text-center"><strong>{{ text }}</strong></span>
+    </v-snackbar>
+  
+</v-form>
+      </v-responsive>
+    </v-container>
+  </template>
+  
+  <script>
 
 export default {
   data: () => ({
@@ -95,11 +96,11 @@ export default {
 
 
 </script>
-
-
-<style>
+  
+  
+  <style>
 .v-btn--variant-outlined {
-  border: thin solid white;
+    border: thin solid red;
 }
-</style>
-
+  </style>
+  

@@ -1,10 +1,11 @@
-<template>
-  <v-main class=" d-flex justify-center align-center  bg-grey-darken-4 fill-height">
+<template >
+    <v-container class="fill-height ">
+      <v-responsive class="d-flex justify-center align-center text-center fill-height ">
     <div class="text-center">
-      <span class="myFont  ">HEY THERE, I'M <strong class="text-black">PATRICK</strong>!</span>
-      <v-divider class="mt-2 mb-2" ength="650px"></v-divider>
-      <span class="myFont2 ">Web developer</span>
-      <v-divider class="mt-2" length="650px"></v-divider>
+      <span class="myFont text-white">HEY THERE, I'M <strong class="text-black">PATRICK</strong>!</span>
+      <v-divider class="mt-2 mb-2" ></v-divider>
+      <span class="myFont2 text-white">Web developer</span>
+      <v-divider class="mt-2" thickness></v-divider>
       <buttonComponentWithTo/>
 
       
@@ -13,21 +14,20 @@
 
 
 
-  </v-main>
-</template>
-
-<script setup>
-  //
-
-  import buttonComponentWithTo from './buttonComponentWithTo.vue';
-</script>
-
-<style>
-#center {
-  width: 650px;
-}
-
-.myFont {
+  </v-responsive>
+    </v-container>
+  </template>
+  
+  <script setup>
+    import buttonComponentWithTo from './buttonComponentWithTo.vue';
+  </script>
+  
+  
+  <style>
+  .v-main{
+    background-color: #212121;
+  }
+  .myFont {
   font-family: 'Finger Paint', cursive;
   font-size: 48px;
 }
@@ -36,8 +36,15 @@
   font-family: 'Finger Paint', cursive;
   font-size: 16px;
 }
+.v-divider{
+    color: white;
+}
 
 .fb-btn.v-btn--outlined {
   border: thin solid #CCCCCC;
 }
-</style>
+
+
+
+  </style>
+  

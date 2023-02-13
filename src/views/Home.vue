@@ -1,7 +1,7 @@
 <template>
-  <homeComponent />
+  <homeComponent/>
 </template>
 
 <script setup>
-  import homeComponent from '@/components/homeComponent.vue'
+  import homeComponent from '@/components/homeComponent.vue';
 </script>
