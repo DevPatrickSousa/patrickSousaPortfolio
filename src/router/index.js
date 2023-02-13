@@ -25,7 +25,7 @@ const routes = [
   },
   {
     path: '/aboutme',
-    name:'aboutme',
+    name:'aboutMe',
     component: aboutMe,
     props: true,
   },
