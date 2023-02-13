@@ -1,17 +1,17 @@
 <template>
 
     <v-app>
-      <menuComponent />
+      <Menu />
       <aboutMeComponent />
-      <footerComponent />
+      <Footer />
     </v-app>
   
   </template>
   
   <script setup> 
   import aboutMeComponent from '@/components/aboutMeComponent.vue';
-  import menuComponent from '@/components/menuComponent.vue';
-  import footerComponent from '@/components/footerComponent.vue';
+  import Menu from '@/components/Menu.vue';
+  import Footer from '@/components/Footer.vue';
   </script>
   
   

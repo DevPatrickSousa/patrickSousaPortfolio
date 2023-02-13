@@ -2,9 +2,9 @@
 
     <v-app>
       
-        <menuComponent />
+        <Menu />
         <contactComponent />
-        <footerComponent />
+        <Footer />
       
     </v-app>
   
@@ -12,7 +12,7 @@
   
   <script setup>
   import contactComponent from '@/components/contactComponent.vue'
-  import menuComponent from '@/components/menuComponent.vue'
-import footerComponent from '@/components/footerComponent.vue'
+  import Menu from '@/components/Menu.vue'
+  import Footer from '@/components/Footer.vue'
   </script>
   
