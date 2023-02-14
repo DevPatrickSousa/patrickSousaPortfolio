@@ -3,7 +3,7 @@
     <v-app>
       
         <Menu />
-        <contactComponent />
+        <Contact />
         <Footer />
       
     </v-app>
@@ -11,7 +11,7 @@
   </template>
   
   <script setup>
-  import contactComponent from '@/components/contactComponent.vue'
+  import Contact from '@/components/Contact.vue'
   import Menu from '@/components/Menu.vue'
   import Footer from '@/components/Footer.vue'
   </script>
