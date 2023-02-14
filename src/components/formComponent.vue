@@ -27,7 +27,7 @@
     </v-text-field>
 
     <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="http://localhost:3000/contact">
+    <input type="hidden" name="_next" value="https://patrick-sousa.vercel.app/contact">
     
     <v-textarea 
     :rules="textRules"
