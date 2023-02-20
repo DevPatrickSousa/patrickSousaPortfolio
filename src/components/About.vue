@@ -314,22 +314,23 @@ import buttonComponentDownload from './buttonComponentDownload.vue';
         
     }
     #btn1Text span{
-        font-size: 6px;
+        font-size: 10px;
     }
     #cardContainer #btn2{
         max-width: 225px;
         max-height: 530px;
-        
+        margin-left: 10px;
     }
     #btn2Text span{
-        font-size: 7px;
+        font-size: 10px;
     }
     #cardContainer #btn3{
         max-width: 225px;
         max-height: 530px;
+        margin-left: 10px;
     }
     #btn3Text span{
-        font-size: 7px;
+        font-size: 10px;
     }
     #educationCard{
         margin-right: 20px;
