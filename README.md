@@ -1,57 +1,29 @@
-# base
+<div align="center">
+<H1 text-align: center;">PATRICK SOUSA PORTFOLIO </H1>
+</div>
 
-## Project setup
+<div align="center">
+<h3> Vue.js + Vuetify </h3>
+</div>
 
-```
-# yarn
-yarn
+<hr> 
 
-# npm
-npm install
+<div align="center">
+https://patrick-sousa.vercel.app/
+</div>
 
-# pnpm
-pnpm install
-```
 
-### Compiles and hot-reloads for development
 
-```
-# yarn
-yarn dev
 
-# npm
-npm run dev
+<hr> 
 
-# pnpm
-pnpm dev
-```
 
-### Compiles and minifies for production
 
-```
-# yarn
-yarn build
+![image](https://user-images.githubusercontent.com/81173243/220011855-2558e4db-e45b-47ee-a219-9d40c8226ac7.png)
 
-# npm
-npm run build
+![image](https://user-images.githubusercontent.com/81173243/220011916-de86597f-940d-4501-aa25-96097ae45b86.png)
 
-# pnpm
-pnpm build
-```
+![image](https://user-images.githubusercontent.com/81173243/220012065-6ea3ef6c-9db2-4361-adb7-c887a869e525.png)
 
-### Lints and fixes files
 
-```
-# yarn
-yarn lint
 
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://vitejs.dev/config/).
