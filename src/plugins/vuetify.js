@@ -24,13 +24,13 @@ export default createVuetify({
     },
   },
   display: {
-    mobileBreakpoint: 'xs',
+    mobileBreakpoint: 'sm',
     thresholds: {
-      xs: 600,
-      sm: 960,
-      md: 1264,
-      lg: 1904,
-      
+      xs: 0,
+      sm: 340,
+      md: 540,
+      lg: 800,
+      xl: 1280,
     },
   },
 })

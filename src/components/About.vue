@@ -98,7 +98,7 @@
                     <span>About me</span>
                 </div>
               
-         <div id="cardContainer">
+         <div id="cards">
             <v-row no-gutters class="d-flex align-center text-center ">
                 <v-col cols="auto" >
             <v-card id="educationCard" class="d-flex justify-center  align-center text-center  rounded-xl  my-2 ml-sm-5" width="240" height="455px" color="black" :style="'border: 1px solid white'" elevation="6">
@@ -126,20 +126,20 @@
          
          <div id="cardContainer">
             <v-row no-gutters class="d-flex align-center text-center ">
-            <v-col cols="auto" class="">
-            <buttonComponentDialog class=""
+            <v-col cols="auto" class="" id="btn1">
+            <buttonComponentDialog class="" id="btn1Text"
             dialogText0='FATEC - Analysis and Development of Systems - 2020/present'
             dialogText1='SENAI - Electromechanical Technician - 2018/2019'
             />
             </v-col>
-            <v-col cols="auto" class="" >
-            <buttonComponentDialog 
+            <v-col cols="auto" class="" id="btn2">
+            <buttonComponentDialog id="btn2Text"
             dialogText0='Prefeitura de Santana de Parnaíba - Network Infrastructure internship - 2022/2022'
             dialogText1='Prefeitura de Santana de Parnaíba - Service Desk internship - 2021/2022'                                      
             />
             </v-col>
-            <v-col cols="auto" >
-            <buttonComponentDialog class=""
+            <v-col cols="auto" id="btn3">
+            <buttonComponentDialog class="" id="btn3Text"
             dialogText0='Portuguese - Native'
             dialogText1='English - Intermediary'  
             />
@@ -209,6 +209,183 @@ import buttonComponentDownload from './buttonComponentDownload.vue';
 #cardContainer .v-row{
     margin: 0;
   }
+
+  @media screen and (max-width: 700px){
+   #leftCard .v-card{
+        max-width: 145px;
+        max-height: 535px;
+    }
+    #cards{
+        margin-left: 20px;
+    }
+    #cards .v-card{
+        max-width: 72px;
+        max-height: 200px;
+        
+    }
+    #cards .v-card span{
+        font-size: 7px;
+        
+    }
+    #cardContainer #btn1{
+        max-width: 94px;
+        max-height: 530px;
+    }
+    #btn1Text span{
+        font-size: 6px;
+    }
+    #cardContainer #btn2{
+        max-width: 94px;
+        max-height: 530px;
+    }
+    #btn2Text span{
+        font-size: 7px;
+    }
+    #cardContainer #btn3{
+        max-width: 94px;
+        max-height: 530px;
+    }
+    #btn3Text span{
+        font-size: 7px;
+    }
+    #educationCard{
+        margin-right: 20px;
+    }
+    #experienceCard{
+        margin-right: 20px;
+    }
+    
+  }
+
+  @media screen and (min-width: 700px){
+    #leftCard .v-card{
+        max-width: 500px;
+        min-height: 840px;
+    }
+    #cards .v-card{
+        max-width: 155px;
+        max-height: 370px;
+        
+    }
+    #cardContainer #btn1{
+        max-width: 180px;
+        max-height: 530px;
+    }
+    #btn1Text span{
+        font-size: 6px;
+    }
+    #cardContainer #btn2{
+        max-width: 180px;
+        max-height: 530px;
+    }
+    #btn2Text span{
+        font-size: 7px;
+    }
+    #cardContainer #btn3{
+        max-width: 180px;
+        max-height: 530px;
+    }
+    #btn3Text span{
+        font-size: 7px;
+    }
+    
+
+  }
+  @media screen and (min-width: 1280px){
+    #leftCard .v-card{
+        max-width: 482px;
+        max-height: 535px;
+        
+    }
+    
+    #cards .v-card{
+        max-width: 192px;
+        max-height: 420px;
+        
+    }
+    #cards .v-card span{
+        font-size: 12px;
+        
+    }
+    #cardContainer #btn1{
+        max-width: 225px;
+        max-height: 530px;
+        
+        
+    }
+    #btn1Text span{
+        font-size: 6px;
+    }
+    #cardContainer #btn2{
+        max-width: 225px;
+        max-height: 530px;
+        
+    }
+    #btn2Text span{
+        font-size: 7px;
+    }
+    #cardContainer #btn3{
+        max-width: 225px;
+        max-height: 530px;
+    }
+    #btn3Text span{
+        font-size: 7px;
+    }
+    #educationCard{
+        margin-right: 20px;
+    }
+    #experienceCard{
+        margin-right: 20px;
+    }
+    
+  }
+
+  @media screen and (min-width: 1920px){
+    #leftCard .v-card{
+        max-width: 482px;
+        max-height: 535px;
+        
+    }
+    
+    #cards .v-card{
+        max-width: 240px;
+        max-height: 455px;
+        
+    }
+    #cards .v-card span{
+        font-size: 16px;
+        
+    }
+    #cardContainer #btn1{
+        max-width: 268px;
+        max-height: 530px;
+        margin-right: 19px;
+    }
+    #btn1Text span{
+        font-size: 12px;
+    }
+    #cardContainer #btn2{
+        max-width: 268px;
+        max-height: 530px;
+        margin-right: 15px;
+    }
+    #btn2Text span{
+        font-size: 12px;
+    }
+    #cardContainer #btn3{
+        max-width: 268px;
+        max-height: 530px;
+    }
+    #btn3Text span{
+        font-size: 12px;
+    }
+    
+    
+
+  }
+  
+
+    
 
   </style>
   
