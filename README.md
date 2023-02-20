@@ -15,31 +15,7 @@ https://www.figma.com/file/p5AzVZ4E9qA2eWVvzVk4fw/portfolio-4-real?node-id=0%3A1
 
 <hr> 
 
-## Project setup
 
-```
-# yarn
-yarn
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-# yarn
-yarn dev
-
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-```
 # Project images at the moment...
 
 ![image](https://user-images.githubusercontent.com/81173243/214489938-20fdbb0e-2a8a-4d36-a97a-b04d96c98aba.png)
