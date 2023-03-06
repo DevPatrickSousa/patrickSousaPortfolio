@@ -1,62 +1,61 @@
 <template >
     <v-container class="fill-height ">
       <v-responsive class="d-flex align-center text-center fill-height ">
-
         <v-form fast-fail ref="form" action="https://formsubmit.co/patrickseven22@hotmail.com" method="POST">
-    <v-text-field 
-    :rules="textRules"
-    class="my-3 text-white"
-    hide-details="auto"
-    label="Name"
-    type="text"
-    name="name"
-    clearable 
-    required>
-    </v-text-field>
+          <v-text-field 
+          :rules="textRules"
+          class="my-3 text-white"
+          hide-details="auto"
+          label="Name"
+          type="text"
+          name="name"
+          clearable 
+          required>
+          </v-text-field>
 
-    <v-text-field 
-    :rules="emailRules"
-    class="my-3 text-white"
-    hide-details="auto"
-    label="Email"
-    type="email"
-    name="email"
-    clearable
-    placeholder="example@hotmail.com"
-    required>
-    </v-text-field>
+          <v-text-field 
+          :rules="emailRules"
+          class="my-3 text-white"
+          hide-details="auto"
+          label="Email"
+          type="email"
+          name="email"
+          clearable
+          placeholder="example@hotmail.com"
+          required>
+          </v-text-field>
 
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://patrick-sousa.vercel.app/">
-    
-    <v-textarea 
-    :rules="textRules"
-    class="my-3 text-white"
-    label="Message"
-    name="message"
-    clearable
-    required>
-    </v-textarea>
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://patrick-sousa.vercel.app/">
+          
+          <v-textarea 
+          :rules="textRules"
+          class="my-3 text-white"
+          label="Message"
+          name="message"
+          clearable
+          required>
+          </v-textarea>
 
 
-    <v-btn 
-      size="small"
-      rounded="pill"
-      color="black"
-      class="mt-4"
-      width="167px"
-      height="34px"
-      variant="outlined"
-      type="submit"
-      @click="validate">
-      <span class="text-white">{{ spanText }}</span>
-      </v-btn>
+          <v-btn 
+            size="small"
+            rounded="pill"
+            color="black"
+            class="mt-4"
+            width="167px"
+            height="34px"
+            variant="outlined"
+            type="submit"
+            @click="validate">
+            <span class="text-white">{{ spanText }}</span>
+            </v-btn>
 
-    <v-snackbar v-model="snackbar" color="success">
-      <span class="text-white text-center"><strong>{{ text }}</strong></span>
-    </v-snackbar>
+          <v-snackbar v-model="snackbar" color="success">
+            <span class="text-white text-center"><strong>{{ text }}</strong></span>
+          </v-snackbar>
   
-</v-form>
+        </v-form>
       </v-responsive>
     </v-container>
   </template>

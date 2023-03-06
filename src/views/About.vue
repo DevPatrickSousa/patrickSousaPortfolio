@@ -1,18 +1,16 @@
 <template>
-
-    <v-app>
-      <Menu />
-      <aboutMeComponent />
-      <Footer />
-    </v-app>
+  <v-app>
+    <Menu />
+    <aboutMeComponent />
+    <Footer />
+  </v-app>
+</template>
   
-  </template>
-  
-  <script setup> 
-  import aboutMeComponent from '@/components/About.vue';
-  import Menu from '@/components/Menu.vue';
-  import Footer from '@/components/Footer.vue';
-  </script>
+<script setup>
+import aboutMeComponent from '@/components/About.vue';
+import Menu from '@/components/Menu.vue';
+import Footer from '@/components/Footer.vue';
+</script>
   
   
   

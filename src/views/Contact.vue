@@ -1,18 +1,14 @@
 <template>
-
     <v-app>
-      
         <Menu />
         <Contact />
         <Footer />
-      
     </v-app>
+</template>
   
-  </template>
-  
-  <script setup>
-  import Contact from '@/components/Contact.vue'
-  import Menu from '@/components/Menu.vue'
-  import Footer from '@/components/Footer.vue'
-  </script>
+<script setup>
+import Contact from '@/components/Contact.vue'
+import Menu from '@/components/Menu.vue'
+import Footer from '@/components/Footer.vue'
+</script>
   
