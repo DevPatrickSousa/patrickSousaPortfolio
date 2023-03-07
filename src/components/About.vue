@@ -94,7 +94,7 @@
         <v-row no-gutters class="d-flex align-center justify-center mt-14"> 
         <div>
             <div id="rightContainer" class="text-center text-white">
-                <div id="aboutMeText" class="ml-5 mb-14">
+                <div id="aboutMeText" class="mb-14">
                     <span>About me</span>
                 </div>
               
@@ -125,7 +125,7 @@
          </div>
          
          <div id="cardContainer">
-            <v-row no-gutters class="d-flex align-center text-center ">
+         <v-row no-gutters class="d-flex align-center justify-center text-center ">
             <v-col cols="auto" class="" id="btn1">
             <buttonComponentDialog class="" id="btn1Text"
             dialogText0='FATEC - Analysis and Development of Systems - 2020/present'
@@ -360,7 +360,9 @@ import buttonComponentDownload from './buttonComponentDownload.vue';
     #cardContainer #btn1{
         max-width: 268px;
         max-height: 530px;
-        margin-right: 19px;
+        padding: 0;
+        margin: 0;
+        margin-left: 5px;
     }
     #btn1Text span{
         font-size: 12px;
@@ -368,7 +370,9 @@ import buttonComponentDownload from './buttonComponentDownload.vue';
     #cardContainer #btn2{
         max-width: 268px;
         max-height: 530px;
-        margin-right: 15px;
+        padding: 0;
+        margin: 0;
+        margin-left: 15px;
     }
     #btn2Text span{
         font-size: 12px;
@@ -376,6 +380,9 @@ import buttonComponentDownload from './buttonComponentDownload.vue';
     #cardContainer #btn3{
         max-width: 268px;
         max-height: 530px;
+        padding: 0;
+        margin: 0;
+        margin-left: 15px;
     }
     #btn3Text span{
         font-size: 12px;
