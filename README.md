@@ -9,6 +9,24 @@
 <hr> 
 
 <div align="center">
+Prototype
+</div>
+
+<hr> 
+
+<div align="center">
+https://www.figma.com/file/p5AzVZ4E9qA2eWVvzVk4fw/portfolio-4-real?node-id=0%3A1&t=2ObWGXzFwDCkm2H5-0
+</div>
+
+<hr> 
+
+<div align="center">
+Domain
+</div>
+
+<hr> 
+
+<div align="center">
 https://patrick-sousa.vercel.app/
 </div>
 
