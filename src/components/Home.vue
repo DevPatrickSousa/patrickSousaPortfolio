@@ -5,7 +5,7 @@ const animatedDescription = ref('');
 const showButton = ref(false);
 const sound = ref(false);
 const noSound = ref(false);
-const topValue = ref('55vh');
+const topValue = ref('45vh');
 const description = 'Desenvolvedor Fullstack com experiência prática em soluções inovadoras para sistemas. Apaixonado por tecnologia, busco agregar valor aos projetos por meio da inovação e eficiência.';
 
 onMounted(() => {
@@ -27,14 +27,14 @@ const soundDialog = () => sound.value = true;
 const noSoundDialog = () => {
   showButton.value = false;
   noSound.value = true;
-  topValue.value = '50vh';
+  topValue.value = '40vh';
 }
 
 watch(sound, async (newVal, oldVal) => {
   if (newVal != oldVal) {
     noSound.value = true;
     showButton.value = false;
-    topValue.value = '50vh';
+    topValue.value = '40vh';
   }
 })
 </script>
@@ -94,7 +94,7 @@ watch(sound, async (newVal, oldVal) => {
 
     <v-dialog v-model="sound" style="max-height: 700px; max-width: 700px" transition="dialog-bottom-transition">
       <v-card>
-        <iframe width="100%" height="344" src="https://www.youtube.com/embed/gP4yzuPuGV4?autoplay=1&start=30"
+        <iframe width="100%" height="344" src="https://www.youtube.com/embed/IxzSRhke-mA?autoplay=1&start=44"
           title="MOÇA SAI DA SACADA, PF" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
