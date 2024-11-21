@@ -1,9 +1,9 @@
 <script setup>
 import { reactive, ref, onMounted } from 'vue';
 import { useDisplay } from 'vuetify';
-import flightSearch from '../assets/flightSearchUpdated.png';
-import flightInfo from '../assets/flightInfo.png';
-import appMakeUp from '../assets/appMakeUp.png';
+import flightSearch from '../assets/flightSearchUpdated.webp';
+import flightInfo from '../assets/flightInfo.webp';
+import appMakeUp from '../assets/appMakeUp.webp';
 import javascript from '../assets/javascript.png';
 import vue from '../assets/vue.png';
 import nuxt from '../assets/nuxt.png';
