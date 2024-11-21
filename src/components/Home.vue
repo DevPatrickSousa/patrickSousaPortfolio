@@ -5,7 +5,7 @@ const animatedDescription = ref('');
 const showButton = ref(false);
 const sound = ref(false);
 const noSound = ref(false);
-const topValue = ref('45vh');
+const topValue = ref('42vh');
 const description = 'Desenvolvedor Fullstack com experiência prática em soluções inovadoras para sistemas. Apaixonado por tecnologia, busco agregar valor aos projetos por meio da inovação e eficiência.';
 
 onMounted(() => {
@@ -27,14 +27,14 @@ const soundDialog = () => sound.value = true;
 const noSoundDialog = () => {
   showButton.value = false;
   noSound.value = true;
-  topValue.value = '40vh';
+  topValue.value = '37vh';
 }
 
 watch(sound, async (newVal, oldVal) => {
   if (newVal != oldVal) {
     noSound.value = true;
     showButton.value = false;
-    topValue.value = '40vh';
+    topValue.value = '37vh';
   }
 })
 </script>

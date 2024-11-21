@@ -4,7 +4,7 @@ import { useDisplay } from 'vuetify';
 import flightSearch from '../assets/flightSearchUpdated.webp';
 import flightInfo from '../assets/flightInfo.webp';
 import appMakeUp from '../assets/appMakeUp.webp';
-import javascript from '../assets/javascript.png';
+import javascript from '../assets/js.png';
 import vue from '../assets/vue.png';
 import nuxt from '../assets/nuxt.png';
 import vuetify from '../assets/vuetify.jpg';
