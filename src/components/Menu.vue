@@ -1,13 +1,23 @@
+<script setup>
+</script>
+
 <template>
-  <v-app-bar title="Patrick Sousa" class="text-white bg-black" :elevation="0">
-    <v-btn to="/" variant="text">Home</v-btn>
-    <v-btn to="/aboutme" variant="text">About me</v-btn>
-    <v-btn to="/contact" variant="text">Contact</v-btn>
+  <v-app-bar class="transparent-bar text-white" style="font-weight: 300;" :elevation="0">
+    <v-spacer></v-spacer>
+    <div class="d-flex text-white justify-center align-center">
+      <v-btn to="/" variant="plain">Início</v-btn>
+      <v-btn to="/aboutme" variant="plain">Sobre mim</v-btn>
+      <v-btn to="/contact" variant="plain">Contato</v-btn>
+    </div>
+    <v-spacer></v-spacer>
   </v-app-bar>
 </template>
 
-<script setup>
-  //
-</script>
+<style scoped>
+.transparent-bar {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
 
-<style></style>
+</style>
