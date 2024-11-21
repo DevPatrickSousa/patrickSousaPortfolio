@@ -1,40 +1,44 @@
 <script setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref, onMounted } from 'vue';
 import { useDisplay } from 'vuetify';
 import flightSearch from '../assets/flightSearchUpdated.png';
 import flightInfo from '../assets/flightInfo.png';
 import appMakeUp from '../assets/appMakeUp.png';
-
-
-const show = ref({
-  formacao: false,
-  experiencia: false,
-  idiomas: false
-});
+import javascript from '../assets/javascript.png';
+import vue from '../assets/vue.png';
+import nuxt from '../assets/nuxt.png';
+import vuetify from '../assets/vuetify.jpg';
+import primevue from '../assets/primevue.webp';
+import python from '../assets/python.png';
+import django from '../assets/django.png';
+import rn from '../assets/rn.webp';
+import chrome from '../assets/chrome.png';
 
 const display = ref(useDisplay())
-
-const stacks = reactive([
-  { name: 'Javascript', rating: 'avançado' },
-  { name: 'Vue', rating: 'avançado' },
-  { name: 'Nuxt', rating: 'básico' },
-  { name: 'Vuetify', rating: 'avançado' },
-  { name: 'PrimeVue', rating: 'avançado' },
-  { name: 'Python', rating: 'intermediário' },
-  { name: 'Django', rating: 'intermediário' },
-  { name: 'React native', rating: 'intermediário' },
-  { name: 'Chrome extensions', rating: 'básico' }
-]);
 
 
 const model = ref()
 const tabFormacao = ref(null)
 const tabExperiencia = ref(null)
+const progress = ref(0)
+const interval = ref(-1)
+const formacaoDialog = ref(false)
 const reveal = ref({
   formacao: false,
   idiomas: false,
   projetos: false
 })
+const stacks = reactive([
+  { name: 'Javascript', rating: 'avançado', img: javascript },
+  { name: 'Vue', rating: 'avançado', img: vue },
+  { name: 'Nuxt', rating: 'básico', img: nuxt },
+  { name: 'Vuetify', rating: 'avançado', img: vuetify },
+  { name: 'PrimeVue', rating: 'avançado', img: primevue },
+  { name: 'Python', rating: 'intermediário', img: python },
+  { name: 'Django', rating: 'intermediário', img: django },
+  { name: 'React native', rating: 'intermediário', img: rn },
+  { name: 'Chrome extensions', rating: 'básico', img: chrome }
+]);
 
 function toggleShow(section) {
   show.value[section] = !show.value[section];
@@ -45,6 +49,15 @@ const items = ref([
   { src: flightInfo, description: 'flight info' },
   { src: appMakeUp, description: 'AppMakeUp' },
 ]);
+
+onMounted(() => {
+  interval.value = setInterval(() => {
+    if (progress.value === 100) {
+      return (progress.value = 0)
+    }
+    progress.value += 20
+  }, 1000)
+})
 </script>
 
 <template>
@@ -64,26 +77,22 @@ const items = ref([
             </v-col>
           </v-row>
 
-          <v-row class="d-flex flex-column justify-end h-100" style="max-height: calc(100% - 96px);">
-            <v-col cols="12" md="6" class="d-flex flex-column justify-end" style="height: fit-content;">
-              <div class="d-flex justify-end column text-white text-uppercase"
-                style="width: 250px; height: fit-content;">
-                <v-list class="text-white"
-                  style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.4)); width: 100%; border-top: 5px solid white; border-right: 5px solid white; border-top-right-radius: 60px;">
-                  <v-list-item-group v-model="model">
-                    <v-list-item v-for="(stack, index) in stacks" :key="index">
-                      <v-list-item-content class="d-flex justify-center">
-                        <v-list-item-title>
-                          <h5 class="hidden-lg hidden-xl text-body-2">{{ stack.name }}</h5>
-                          <h3 class="hidden-sm hidden-md hidden-xs text-body-2">{{ stack.name }}</h3>
-                        </v-list-item-title>
-                        <v-spacer />
-                        <h5 class="hidden-lg hidden-xl text-body-2">{{ stack.rating }}</h5>
-                        <h3 class="hidden-sm hidden-md hidden-xs text-body-2">{{ stack.rating }}</h3>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-list-item-group>
-                </v-list>
+          <v-row class="d-flex flex-column  h-100" style="max-height: calc(100% - 96px);">
+            <v-col cols="12" md="6" class="d-flex flex-column " style="height: fit-content;">
+              <div class="d-flex justify-start align-center" v-for="(stack, index) in stacks" :key="index"
+                style="margin-top: 2px; margin-bottom: 2px;">
+                <v-progress-circular :model-value="progress" :rotate="360" :size="70" :width="5" color="white"
+                  class="mr-3">
+                  <template v-slot:default>
+                    <div class="bg-white rounded-circle">
+                      <v-img :src="stack.img" contain class="rounded-circle" width="60" height="60" />
+                    </div>
+                  </template>
+                </v-progress-circular>
+
+                <div class="d-flex flex-column text-white text-uppercase text-body-2">
+                  <span>{{ stack.name }}</span>
+                </div>
               </div>
             </v-col>
           </v-row>
@@ -102,7 +111,7 @@ const items = ref([
                 </template>
                 <template v-slot:actions>
                   <v-btn v-if="!reveal.formacao" class="text-uppercase" color="white" variant="outlined" block
-                    @click="reveal.formacao = true" style="font-weight: 300;">
+                    @click="formacaoDialog = true" style="font-weight: 300;">
                     mais detalhes
                   </v-btn>
                 </template>
@@ -424,7 +433,7 @@ const items = ref([
                         <v-card-text class="text-center text-black">
                           <h2 class="text-h5">index 0</h2>
                           <p class="text-medium-emphasis">
-                           1.
+                            1.
                           </p>
                         </v-card-text>
                         <v-card-actions class="justify-center">
@@ -440,7 +449,7 @@ const items = ref([
                         <v-card-text class="text-center text-white">
                           <h2 class="text-h5 text-black">index 1</h2>
                           <p class="text-medium-emphasis">
-                           2.
+                            2.
                           </p>
                         </v-card-text>
                         <v-card-actions class="justify-center">
@@ -456,7 +465,7 @@ const items = ref([
                         <v-card-text class="text-center text-white">
                           <h2 class="text-h5 text-black">index 2</h2>
                           <p class="text-medium-emphasis">
-                           2.
+                            2.
                           </p>
                         </v-card-text>
                         <v-card-actions class="justify-center">
@@ -474,6 +483,15 @@ const items = ref([
         </v-row>
       </v-col>
     </v-row>
+    <!-- DIALOGS-->
+    <v-dialog v-model="formacaoDialog" max-width="500">
+      <v-card width="500">
+        <template v-slot:title>
+          <span class="font-weight-black">teste</span>
+        </template>
+      </v-card>
+    </v-dialog>
+
   </v-container>
 
 </template>
