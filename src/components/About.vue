@@ -14,20 +14,19 @@ import django from '../assets/django.png';
 import rn from '../assets/rn.webp';
 import chrome from '../assets/chrome.png';
 
-const display = ref(useDisplay())
-
-
-const model = ref()
 const tabFormacao = ref(null)
 const tabExperiencia = ref(null)
 const progress = ref(0)
 const interval = ref(-1)
 const formacaoDialog = ref(false)
-const reveal = ref({
-  formacao: false,
-  idiomas: false,
-  projetos: false
-})
+const experienciaDialog = ref(false)
+const projetosDialog = ref(false)
+const activeIndex = ref(null);
+const items = ref([
+  { src: flightSearch, description: 'flight search' },
+  { src: flightInfo, description: 'flight info' },
+  { src: appMakeUp, description: 'AppMakeUp' },
+]);
 const stacks = reactive([
   { name: 'Javascript', rating: 'avançado', img: javascript },
   { name: 'Vue', rating: 'avançado', img: vue },
@@ -40,15 +39,10 @@ const stacks = reactive([
   { name: 'Chrome extensions', rating: 'básico', img: chrome }
 ]);
 
-function toggleShow(section) {
-  show.value[section] = !show.value[section];
+function openProjectsDialog(index) {
+  activeIndex.value = index;
+  projetosDialog.value = true;
 }
-
-const items = ref([
-  { src: flightSearch, description: 'flight search' },
-  { src: flightInfo, description: 'flight info' },
-  { src: appMakeUp, description: 'AppMakeUp' },
-]);
 
 onMounted(() => {
   interval.value = setInterval(() => {
@@ -110,138 +104,14 @@ onMounted(() => {
                   <span class="text-uppercase text-h5" style="font-weight: 300;">formação</span>
                 </template>
                 <template v-slot:actions>
-                  <v-btn v-if="!reveal.formacao" class="text-uppercase" color="white" variant="outlined" block
-                    @click="formacaoDialog = true" style="font-weight: 300;">
+                  <v-btn class="text-uppercase" color="white" variant="outlined" block @click="formacaoDialog = true"
+                    style="font-weight: 300;">
                     mais detalhes
                   </v-btn>
                 </template>
                 <v-expand-transition class="overflow-y-auto">
-                  <v-card v-if="reveal.formacao" class="position-absolute w-100 h-100 d-flex flex-column"
-                    style="bottom: 0; background: rgba(255, 255, 255, 1); border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
-                    <v-tabs v-model="tabFormacao"
-                      style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1));">
-                      <v-row>
-                        <v-col cols="6">
-                          <v-tab value="fatec" class="text-white">FATEC</v-tab>
-                        </v-col>
-                        <v-col cols="6">
-                          <v-tab value="senai" class="text-white">SENAI</v-tab>
-                        </v-col>
-                      </v-row>
-                    </v-tabs>
 
-                    <v-card-text class="pb-0 px-0 overflow-y-auto overflow-x-hidden">
-                      <v-row>
-                        <v-col cols="12" class="pa-0">
-                          <v-img v-if="tabFormacao == 'fatec'" width="100%" aspect-ratio="16/9" cover
-                            style="max-height: 185px;" src="../assets/fatec.png"></v-img>
-                          <v-img v-if="tabFormacao == 'senai'" width="100%" aspect-ratio="16/9" cover
-                            style="max-height: 185px;" src="../assets/senai.jpg"></v-img>
-                        </v-col>
-                        <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
-                      </v-row>
-                      <v-row>
-                        <v-col cols="12" class="py-0">
-                          <v-tabs-window v-model="tabFormacao">
-                            <v-tabs-window-item value="fatec">
-                              <v-row align="center">
-                                <v-col cols="5">
-                                  <span class="text-body-2">Curso:</span>
-                                </v-col>
-
-                                <v-col cols="2" class="d-flex justify-center py-0">
-                                  <v-divider :thickness="5" vertical style="height: 50px;"></v-divider>
-                                </v-col>
-
-                                <v-col cols="5">
-                                  <span class="text-body-2">ADS</span>
-                                </v-col>
-                              </v-row>
-
-                              <v-row align="center" class="mt-0">
-                                <v-col cols="5">
-                                  <span class="text-body-2">Período:</span>
-                                </v-col>
-
-                                <v-col cols="2" class="d-flex justify-center py-0">
-                                  <v-divider :thickness="5" vertical style="height: 50px;"></v-divider>
-                                </v-col>
-
-                                <v-col cols="5">
-                                  <span class="text-body-2">01/2020 - 11/2024</span>
-                                </v-col>
-                              </v-row>
-
-                              <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
-
-                              <v-row>
-                                <v-col cols="12">
-                                  <span class="text-body-2">Descrição:</span>
-                                </v-col>
-                                <v-col cols="12" class="">
-                                  <span class="text-body-2 text-justify">Curso superior em análise e desenvolvimento de
-                                    sistemas
-                                    realizado na instituição FATEC SPB.</span>
-                                </v-col>
-                              </v-row>
-                            </v-tabs-window-item>
-
-                            <v-tabs-window-item value="senai">
-                              <v-row align="center">
-                                <v-col cols="5">
-                                  <span class="text-body-2">Curso:</span>
-                                </v-col>
-
-                                <v-col cols="2" class="d-flex justify-center py-0">
-                                  <v-divider :thickness="5" vertical style="height: 50px;"></v-divider>
-                                </v-col>
-
-                                <v-col cols="5">
-                                  <span class="text-body-2">Eletromecânica</span>
-                                </v-col>
-                              </v-row>
-
-                              <v-row align="center" class="mt-0">
-                                <v-col cols="5">
-                                  <span class="text-body-2">Período:</span>
-                                </v-col>
-
-                                <v-col cols="2" class="d-flex justify-center py-0">
-                                  <v-divider :thickness="5" vertical style="height: 50px;"></v-divider>
-                                </v-col>
-
-                                <v-col cols="5">
-                                  <span class="text-body-2">01/2020 - 11/2024</span>
-                                </v-col>
-                              </v-row>
-
-                              <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
-
-                              <v-row>
-                                <v-col cols="12">
-                                  <span class="text-body-2">Descrição:</span>
-                                </v-col>
-                                <v-col cols="12" class="">
-                                  <span class="text-body-2 text-justify">Curso técnico em eletromecânica realizado na
-                                    instituição SENAI
-                                    Suzana Dias.</span>
-                                </v-col>
-                              </v-row>
-                            </v-tabs-window-item>
-                          </v-tabs-window>
-                        </v-col>
-                      </v-row>
-                    </v-card-text>
-
-                    <v-card-actions class="mt-auto">
-                      <v-btn class="text-uppercase" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined"
-                        block @click="reveal.formacao = false" style="font-weight: 300;">
-                        menos detalhes
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card>
                 </v-expand-transition>
-
               </v-card>
             </div>
           </v-col>
@@ -254,154 +124,11 @@ onMounted(() => {
                   <span class="text-uppercase text-h5" style="font-weight: 300;">experiência</span>
                 </template>
                 <template v-slot:actions>
-                  <v-btn v-if="!reveal.experiencia" class="text-uppercase" color="white" variant="outlined" block
-                    @click="reveal.experiencia = true" style="font-weight: 300;">
+                  <v-btn class="text-uppercase" color="white" variant="outlined" block @click="experienciaDialog = true"
+                    style="font-weight: 300;">
                     mais detalhes
                   </v-btn>
                 </template>
-                <v-expand-transition class="">
-                  <v-card v-if="reveal.experiencia" class="position-absolute w-100 h-100 d-flex flex-column"
-                    style="bottom: 0; background: rgba(255, 255, 255, 1); border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
-                    <v-tabs v-model="tabExperiencia"
-                      style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1)); min-height: 48px;">
-                      <v-row>
-                        <v-col cols="6">
-                          <v-tab value="skyler" class="text-white">SKYLER</v-tab>
-                        </v-col>
-                        <v-col cols="6">
-                          <v-tab value="prefeitura" class="text-white">PREFEITURA DE SPB</v-tab>
-                        </v-col>
-                      </v-row>
-                    </v-tabs>
-
-                    <v-card-text class="pb-0 px-0 overflow-y-auto overflow-x-hidden">
-                      <v-row>
-                        <v-col cols="12" class="pa-0">
-                          <v-img v-if="tabExperiencia == 'skyler'" width="100%" aspect-ratio="16/9" cover
-                            style="max-height: 185px;" src="../assets/testesky.png"></v-img>
-                          <v-img v-if="tabExperiencia == 'prefeitura'" width="100%" aspect-ratio="16/9" cover
-                            style="max-height: 185px;" src="../assets/spb.png"></v-img>
-                        </v-col>
-                        <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
-                      </v-row>
-                      <v-row>
-                        <v-col cols="12" class="py-0">
-                          <v-tabs-window v-model="tabExperiencia">
-                            <v-tabs-window-item value="skyler">
-                              <v-row align="center">
-                                <v-col cols="5">
-                                  <span class="text-body-2">Empresa:</span>
-                                </v-col>
-
-                                <v-col cols="2" class="d-flex justify-center py-0">
-                                  <v-divider :thickness="5" vertical style="height: 50px;"></v-divider>
-                                </v-col>
-
-                                <v-col cols="5">
-                                  <span class="text-body-2">Skyler</span>
-                                </v-col>
-                              </v-row>
-
-                              <v-row align="center" class="mt-0">
-                                <v-col cols="5">
-                                  <span class="text-body-2">Período:</span>
-                                </v-col>
-
-                                <v-col cols="2" class="d-flex justify-center py-0">
-                                  <v-divider :thickness="5" vertical style="height: 50px;"></v-divider>
-                                </v-col>
-
-                                <v-col cols="5">
-                                  <span class="text-body-2">04/2023 - 09/2024</span>
-                                </v-col>
-                              </v-row>
-
-                              <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
-
-                              <v-row>
-                                <v-col cols="12">
-                                  <span class="text-body-2">Descrição:</span>
-                                </v-col>
-                                <v-col cols="12" class="">
-                                  <span class="text-body-2 text-justify">Implementei funcionalidades no sistema Skyler
-                                    para
-                                    automatizar tarefas, incluindo um controle financeiro para facilitar a gestão e
-                                    melhorar a
-                                    experiência do usuário. Conduzi pesquisas para aprimorar o desempenho e solucionei
-                                    problemas
-                                    dentro dos prazos, utilizando GitLab para versionamento e gestão. As principais
-                                    tecnologias
-                                    utilizadas foram Vue.js, Nuxt, Vuetify, PrimeVue e Django REST. Também criei uma
-                                    extensão
-                                    Chrome para automatizar processos específicos.</span>
-                                </v-col>
-                              </v-row>
-                            </v-tabs-window-item>
-
-                            <v-tabs-window-item value="prefeitura">
-                              <v-row align="center">
-                                <v-col cols="5">
-                                  <span class="text-body-2">Empresa:</span>
-                                </v-col>
-
-                                <v-col cols="2" class="d-flex justify-center py-0">
-                                  <v-divider :thickness="5" vertical style="height: 50px;"></v-divider>
-                                </v-col>
-
-                                <v-col cols="5">
-                                  <span class="text-body-2">Prefeitura de SPB</span>
-                                </v-col>
-                              </v-row>
-
-                              <v-row align="center" class="mt-0">
-                                <v-col cols="5">
-                                  <span class="text-body-2">Período:</span>
-                                </v-col>
-
-                                <v-col cols="2" class="d-flex justify-center py-0">
-                                  <v-divider :thickness="5" vertical style="height: 50px;"></v-divider>
-                                </v-col>
-
-                                <v-col cols="5">
-                                  <span class="text-body-2">03/2021 - 12/2022</span>
-                                </v-col>
-                              </v-row>
-
-                              <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
-
-                              <v-row>
-                                <v-col cols="12">
-                                  <span class="text-body-2">Descrição:</span>
-                                </v-col>
-                                <v-col cols="12" class="">
-                                  <span class="text-body-2 text-justify">Responsável por testar equipamentos de rede
-                                    (roteadores,
-                                    switches, VOIP, etc.), filtrar problemas relatados no sistema e encaminhá-los para a
-                                    equipe
-                                    técnica com as informações necessárias. Além disso, separava materiais para
-                                    infraestrutura
-                                    conforme as especificações da equipe e realizava atendimento remoto aos servidores,
-                                    utilizando
-                                    ferramentas ITSM para diagnosticar e solucionar problemas, tanto em sistemas
-                                    operacionais
-                                    quanto em outros sistemas específicos.</span>
-                                </v-col>
-                              </v-row>
-                            </v-tabs-window-item>
-                          </v-tabs-window>
-                        </v-col>
-                      </v-row>
-                    </v-card-text>
-
-                    <v-card-actions class="mt-auto">
-                      <v-btn class="text-uppercase" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined"
-                        block @click="reveal.experiencia = false" style="font-weight: 300;">
-                        menos detalhes
-                      </v-btn>
-                    </v-card-actions>
-
-                  </v-card>
-                </v-expand-transition>
               </v-card>
             </div>
           </v-col>
@@ -411,56 +138,51 @@ onMounted(() => {
           style="max-height: 400px; min-width: 100%; border-bottom-right-radius: 5px;">
           <v-col cols="12" class="pl-0 pt-0 h-100">
             <v-carousel :show-arrows="hover" hide-delimiters cycle class="h-100 min-w-100" style="">
-              <v-carousel-item v-for="(item, index) in items" :key="i">
+              <v-carousel-item v-for="(item, index) in items" :key="index">
                 <v-img :src="item.src" class="h-100 w-100" cover>
                   <template #default>
-                    <div class="overlay"></div>
-
-                    <div class="position-absolute w-100 h-100 d-flex flex-column align-center justify-center"
+                    <div class="overlay position-absolute w-100 h-100 d-flex flex-column align-center justify-center"
                       style="top: 0;">
                       <span class="text-h5 text-white text-uppercase px-4"
                         style="font-weight: 300; padding-top: 10px; padding-bottom: 10px;">{{ item.description }}</span>
-                      <v-btn v-if="!reveal.projetos" class="text-uppercase pa-2" color="white" variant="outlined"
-                        @click="reveal.projetos = true" style="font-weight: 300;">
+                      <v-btn class="text-uppercase pa-2" color="white" variant="outlined"
+                        @click="openProjectsDialog(index)" style="font-weight: 300;">
                         mais detalhes
                       </v-btn>
                     </div>
 
-                    <v-expand-transition>
-                      <v-card v-if="reveal.projetos && index == 0"
-                        class="position-absolute w-100 h-100 d-flex flex-column align-center justify-center"
+                    <v-dialog v-model="projetosDialog" max-width="500">
+                      <v-card v-if="activeIndex === 0" class="w-100 h-100 d-flex flex-column" width="500"
                         style="top: 0; background-color: white;">
                         <v-card-text class="text-center text-black">
                           <h2 class="text-h5">index 0</h2>
+                          <p class="text-medium-emphasis">
+                            0.
+                          </p>
+                        </v-card-text>
+                        <v-card-actions class="justify-center">
+                          <v-btn color="primary" class="text-uppercase" @click="projetosDialog = false">
+                            Menos detalhes
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+
+                      <v-card v-if="activeIndex === 1" class="w-100 h-100 d-flex flex-column" width="500"
+                        style="top: 0; background-color: white;">
+                        <v-card-text class="text-center text-white">
+                          <h2 class="text-h5 text-black">index 1</h2>
                           <p class="text-medium-emphasis">
                             1.
                           </p>
                         </v-card-text>
                         <v-card-actions class="justify-center">
-                          <v-btn color="primary" class="text-uppercase" @click="reveal.projetos = false">
+                          <v-btn color="primary" class="text-uppercase" @click="projetosDialog = false">
                             Menos detalhes
                           </v-btn>
                         </v-card-actions>
                       </v-card>
 
-                      <v-card v-if="reveal.projetos && index == 1"
-                        class="position-absolute w-100 h-100 d-flex flex-column align-center justify-center"
-                        style="top: 0; background-color: white;">
-                        <v-card-text class="text-center text-white">
-                          <h2 class="text-h5 text-black">index 1</h2>
-                          <p class="text-medium-emphasis">
-                            2.
-                          </p>
-                        </v-card-text>
-                        <v-card-actions class="justify-center">
-                          <v-btn color="primary" class="text-uppercase" @click="reveal.projetos = false">
-                            Menos detalhes
-                          </v-btn>
-                        </v-card-actions>
-                      </v-card>
-
-                      <v-card v-if="reveal.projetos && index == 2"
-                        class="position-absolute w-100 h-100 d-flex flex-column align-center justify-center"
+                      <v-card v-if="activeIndex === 2" class="w-100 h-100 d-flex flex-column" width="500"
                         style="top: 0; background-color: white;">
                         <v-card-text class="text-center text-white">
                           <h2 class="text-h5 text-black">index 2</h2>
@@ -469,12 +191,12 @@ onMounted(() => {
                           </p>
                         </v-card-text>
                         <v-card-actions class="justify-center">
-                          <v-btn color="primary" class="text-uppercase" @click="reveal.projetos = false">
+                          <v-btn color="primary" class="text-uppercase" @click="projetosDialog = false">
                             Menos detalhes
                           </v-btn>
                         </v-card-actions>
                       </v-card>
-                    </v-expand-transition>
+                    </v-dialog>
                   </template>
                 </v-img>
               </v-carousel-item>
@@ -483,19 +205,225 @@ onMounted(() => {
         </v-row>
       </v-col>
     </v-row>
-    <!-- DIALOGS-->
+    <!-- formacao dialog-->
     <v-dialog v-model="formacaoDialog" max-width="500">
-      <v-card width="500">
-        <template v-slot:title>
-          <span class="font-weight-black">teste</span>
-        </template>
+      <v-card class="w-100 h-100 d-flex flex-column " width="500"
+        style="bottom: 0; background: rgba(255, 255, 255, 1); border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+        <v-tabs v-model="tabFormacao" class="d-flex justify-between"
+          style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1));">
+          <v-tab value="fatec" class="text-white flex-grow-1 text-center">FATEC</v-tab>
+          <v-tab value="senai" class="text-white flex-grow-1 text-center">SENAI</v-tab>
+        </v-tabs>
+
+        <v-card-text class="pb-0 px-0 overflow-y-auto overflow-x-hidden">
+          <v-row>
+            <v-col cols="12" class="py-0">
+              <v-img v-if="tabFormacao == 'fatec'" width="100%" aspect-ratio="16/9" cover style="max-height: 185px;"
+                src="../assets/fatec.png"></v-img>
+              <v-img v-if="tabFormacao == 'senai'" width="100%" aspect-ratio="16/9" cover style="max-height: 185px;"
+                src="../assets/senai.jpg"></v-img>
+            </v-col>
+            <v-divider :thickness="5" class=" px-3"></v-divider>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="py-0">
+              <v-tabs-window v-model="tabFormacao">
+                <v-tabs-window-item value="fatec">
+                  <v-row align="center">
+                    <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
+                      <span class="text-body-2 px-2">Curso:</span>
+                    </v-col>
+
+                    <v-col cols="6" class="d-flex justify-center">
+                      <span class="text-body-2 text-center">ADS</span>
+                    </v-col>
+                  </v-row>
+
+                  <v-row align="center" class="mt-0">
+                    <v-col cols="6" style="border-right: 4.5px solid rgba(0, 0, 0, 0.12);">
+                      <span class="text-body-2 px-2">Período:</span>
+                    </v-col>
+
+                    <v-col cols="6" class="d-flex justify-center">
+                      <span class="text-body-2">01/2020 - 11/2024</span>
+                    </v-col>
+                  </v-row>
+
+                  <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
+
+                  <v-row>
+                    <v-col cols="12" class="d-flex justify-center">
+                      <span class="text-body-2 px-2">Curso superior em análise e desenvolvimento de
+                        sistemas
+                        realizado na instituição FATEC SPB.
+                      </span>
+                    </v-col>
+                  </v-row>
+                </v-tabs-window-item>
+
+                <v-tabs-window-item value="senai">
+                  <v-row align="center">
+                    <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
+                      <span class="text-body-2 px-2">Curso:</span>
+                    </v-col>
+
+                    <v-col cols="6" class="d-flex justify-center">
+                      <span class="text-body-2 ">Eletromecânica</span>
+                    </v-col>
+                  </v-row>
+
+                  <v-row align="center" class="mt-0">
+                    <v-col style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
+                      <span class="text-body-2 px-2">Período:</span>
+                    </v-col>
+
+                    <v-col cols="6" class="d-flex justify-center">
+                      <span class="text-body-2">01/2020 - 11/2024</span>
+                    </v-col>
+                  </v-row>
+
+                  <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
+
+                  <v-row>
+                    <v-col cols="12" class="d-flex justify-center">
+                      <span class="text-body-2 text-justify px-2">Curso técnico em eletromecânica realizado na
+                        instituição SENAI
+                        Suzana Dias.</span>
+                    </v-col>
+                  </v-row>
+                </v-tabs-window-item>
+              </v-tabs-window>
+            </v-col>
+          </v-row>
+        </v-card-text>
+
+        <v-card-actions class="mt-auto pa-3">
+          <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
+            @click="formacaoDialog = false" style="font-weight: 300;">
+            menos detalhes
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </v-dialog>
 
+    <!-- experience dialog-->
+    <v-dialog v-model="experienciaDialog" max-width="500">
+      <v-card class="w-100 h-100 d-flex flex-column " width="500"
+        style="bottom: 0; background: rgba(255, 255, 255, 1); border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+        <v-tabs v-model="tabExperiencia" class="d-flex justify-between"
+          style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1));">
+          <v-tab value="skyler" class="text-white flex-grow-1 text-center">Skyler</v-tab>
+          <v-tab value="prefeitura" class="text-white flex-grow-1 text-center">Prefeitura de SPB</v-tab>
+        </v-tabs>
+
+        <v-card-text class="pb-0 px-0 overflow-y-auto overflow-x-hidden">
+          <v-row>
+            <v-col cols="12" class="py-0">
+              <v-img v-if="tabExperiencia == 'skyler'" width="100%" aspect-ratio="16/9" cover style="max-height: 185px;"
+                src="../assets/skyler.png"></v-img>
+              <v-img v-if="tabExperiencia == 'prefeitura'" width="100%" aspect-ratio="16/9" cover
+                style="max-height: 185px;" src="../assets/spb.png"></v-img>
+            </v-col>
+            <v-divider :thickness="5" class=" px-3"></v-divider>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="py-0">
+              <v-tabs-window v-model="tabExperiencia">
+                <v-tabs-window-item value="skyler">
+                  <v-row align="center">
+                    <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
+                      <span class="text-body-2 px-2">Empresa:</span>
+                    </v-col>
+
+                    <v-col cols="6" class="d-flex justify-center">
+                      <span class="text-body-2 text-center">Skyler</span>
+                    </v-col>
+                  </v-row>
+
+                  <v-row align="center" class="mt-0">
+                    <v-col cols="6" style="border-right: 4.5px solid rgba(0, 0, 0, 0.12);">
+                      <span class="text-body-2 px-2">Período:</span>
+                    </v-col>
+
+                    <v-col cols="6" class="d-flex justify-center">
+                      <span class="text-body-2">04/2023 - 09/2024</span>
+                    </v-col>
+                  </v-row>
+
+                  <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
+
+                  <v-row>
+                    <v-col cols="12" class="d-flex justify-center">
+                      <span class="text-body-2 px-2">Implementei funcionalidades no sistema Skyler
+                        para
+                        automatizar tarefas, incluindo um controle financeiro para facilitar a gestão e
+                        melhorar a
+                        experiência do usuário. Conduzi pesquisas para aprimorar o desempenho e solucionei
+                        problemas
+                        dentro dos prazos, utilizando GitLab para versionamento e gestão. As principais
+                        tecnologias
+                        utilizadas foram Vue.js, Nuxt, Vuetify, PrimeVue e Django REST. Também criei uma
+                        extensão
+                        Chrome para automatizar processos específicos.
+                      </span>
+                    </v-col>
+                  </v-row>
+                </v-tabs-window-item>
+
+                <v-tabs-window-item value="prefeitura">
+                  <v-row align="center">
+                    <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
+                      <span class="text-body-2 px-2">Empresa:</span>
+                    </v-col>
+
+                    <v-col cols="6" class="d-flex justify-center">
+                      <span class="text-body-2 ">Prefeitura de SPB</span>
+                    </v-col>
+                  </v-row>
+
+                  <v-row align="center" class="mt-0">
+                    <v-col style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
+                      <span class="text-body-2 px-2">Período:</span>
+                    </v-col>
+
+                    <v-col cols="6" class="d-flex justify-center">
+                      <span class="text-body-2">03/2021 - 12/2022</span>
+                    </v-col>
+                  </v-row>
+
+                  <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
+
+                  <v-row>
+                    <v-col cols="12" class="d-flex justify-center">
+                      <span class="text-body-2 text-justify px-2">Responsável por testar equipamentos de rede
+                        (roteadores,
+                        switches, VOIP, etc.), filtrar problemas relatados no sistema e encaminhá-los para a
+                        equipe
+                        técnica com as informações necessárias. Além disso, separava materiais para
+                        infraestrutura
+                        conforme as especificações da equipe e realizava atendimento remoto aos servidores,
+                        utilizando
+                        ferramentas ITSM para diagnosticar e solucionar problemas, tanto em sistemas
+                        operacionais
+                        quanto em outros sistemas específicos.</span>
+                    </v-col>
+                  </v-row>
+                </v-tabs-window-item>
+              </v-tabs-window>
+            </v-col>
+          </v-row>
+        </v-card-text>
+
+        <v-card-actions class="mt-auto pa-3">
+          <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
+            @click="experienciaDialog = false" style="font-weight: 300;">
+            menos detalhes
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
-
 </template>
-
 
 <style scoped>
 .gradient-text {
