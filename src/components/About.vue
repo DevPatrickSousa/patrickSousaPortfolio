@@ -208,14 +208,14 @@ onMounted(() => {
     <!-- formacao dialog-->
     <v-dialog v-model="formacaoDialog" max-width="500">
       <v-card class="w-100 h-100 d-flex flex-column " width="500"
-        style="bottom: 0; background: rgba(255, 255, 255, 1); border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+        style="bottom: 0; background: rgba(255, 255, 255, 1);">
         <v-tabs v-model="tabFormacao" class="d-flex justify-between"
           style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1));">
           <v-tab value="fatec" class="text-white flex-grow-1 text-center">FATEC</v-tab>
           <v-tab value="senai" class="text-white flex-grow-1 text-center">SENAI</v-tab>
         </v-tabs>
 
-        <v-card-text class="pb-0 px-0 overflow-y-auto overflow-x-hidden">
+        <v-card-text class="pb-0 px-0">
           <v-row>
             <v-col cols="12" class="py-0">
               <v-img v-if="tabFormacao == 'fatec'" width="100%" aspect-ratio="16/9" cover style="max-height: 185px;"
@@ -253,7 +253,7 @@ onMounted(() => {
 
                   <v-row>
                     <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 px-2">Curso superior em análise e desenvolvimento de
+                      <span class="text-body-2 px-2 py-1">Curso superior em análise e desenvolvimento de
                         sistemas
                         realizado na instituição FATEC SPB.
                       </span>
@@ -286,7 +286,7 @@ onMounted(() => {
 
                   <v-row>
                     <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 text-justify px-2">Curso técnico em eletromecânica realizado na
+                      <span class="text-body-2 text-justify px-2 py-1">Curso técnico em eletromecânica realizado na
                         instituição SENAI
                         Suzana Dias.</span>
                     </v-col>
@@ -309,14 +309,14 @@ onMounted(() => {
     <!-- experience dialog-->
     <v-dialog v-model="experienciaDialog" max-width="500">
       <v-card class="w-100 h-100 d-flex flex-column " width="500"
-        style="bottom: 0; background: rgba(255, 255, 255, 1); border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+        style="bottom: 0; background: rgba(255, 255, 255, 1);">
         <v-tabs v-model="tabExperiencia" class="d-flex justify-between"
           style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1));">
           <v-tab value="skyler" class="text-white flex-grow-1 text-center">Skyler</v-tab>
           <v-tab value="prefeitura" class="text-white flex-grow-1 text-center">Prefeitura de SPB</v-tab>
         </v-tabs>
 
-        <v-card-text class="pb-0 px-0 overflow-y-auto overflow-x-hidden">
+        <v-card-text class="pb-0 px-0">
           <v-row>
             <v-col cols="12" class="py-0">
               <v-img v-if="tabExperiencia == 'skyler'" width="100%" aspect-ratio="16/9" cover style="max-height: 185px;"
@@ -354,7 +354,7 @@ onMounted(() => {
 
                   <v-row>
                     <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 px-2">Implementei funcionalidades no sistema Skyler
+                      <span class="text-body-2 px-2 py-1">Implementei funcionalidades no sistema Skyler
                         para
                         automatizar tarefas, incluindo um controle financeiro para facilitar a gestão e
                         melhorar a
@@ -395,7 +395,7 @@ onMounted(() => {
 
                   <v-row>
                     <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 text-justify px-2">Responsável por testar equipamentos de rede
+                      <span class="text-body-2 text-justify px-2 py-1">Responsável por testar equipamentos de rede
                         (roteadores,
                         switches, VOIP, etc.), filtrar problemas relatados no sistema e encaminhá-los para a
                         equipe
@@ -451,7 +451,7 @@ onMounted(() => {
 }
 
 button:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   transition: all 0.3s ease;
 }
 </style>
