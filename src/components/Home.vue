@@ -40,7 +40,7 @@ watch(sound, async (newVal, oldVal) => {
 </script>
 
 <template>
-  <v-card color="black" elevation="10" style="height: 100%; width: 100%; border-radius: 0;" image="../assets/ve2.png">
+  <v-card color="black" elevation="10" style="height: 100%; width: 100%; border-radius: 0;" image="../assets/euBackground.png">
     <div style="position: relative; background: linear-gradient(to bottom, rgba(57, 0, 255, 0.4), rgba(0, 0, 0, 0.5))">
 
       <v-card-title class="text-uppercase text-h2"
