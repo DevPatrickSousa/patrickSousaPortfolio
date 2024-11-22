@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, onMounted } from 'vue';
+import { reactive, ref, computed, onMounted } from 'vue';
 import { useDisplay } from 'vuetify';
 import flightSearch from '../assets/flightSearchUpdated.webp';
 import flightInfo from '../assets/flightInfo.webp';
@@ -14,6 +14,7 @@ import django from '../assets/django.png';
 import rn from '../assets/rn.webp';
 import chrome from '../assets/chrome.png';
 
+const { name } = useDisplay()
 const tabFormacao = ref(null)
 const tabExperiencia = ref(null)
 const progress = ref(0)
@@ -52,34 +53,51 @@ onMounted(() => {
     progress.value += 20
   }, 1000)
 })
+
+const skillsCard = computed(() => {
+  switch (name.value) {
+    case 'xs': return 220
+    case 'sm': return 400
+    case 'md': return 820
+    case 'lg': return 820
+    case 'xl': return 815
+    case 'xxl': return 1200
+  }
+
+  return undefined
+})
 </script>
 
 <template>
-  <v-container fluid class="pt-0 pb-0 fill-height">
-    <v-row class="d-flex ma-0 fill-height">
-      <v-col cols="12" md="6" class="d-flex flex-column fill-height pr-0">
-        <v-card max-width="100%" color="black" class="fill-height" elevation="0" image="../assets/eu-card.png"
-          style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;">
-          <v-row>
+  <v-container fluid class="pt-0 pb-0">
+    <v-row class="d-flex ma-0 fill-height" no-gutters>
+      <v-col cols="12" md="6" class="d-flex flex-column fill-height h-100 pr-0">
+        <v-card max-width="100%" :height="skillsCard" color="black" class="" elevation="0" image="../assets/eu-card.png"
+          style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"
+          :style="name === 'md' || name === 'sm' ? { borderTopRightRadius: '4px', borderBottomRightRadius: '4px' } : {}">
+          <v-row no-gutters>
             <v-col cols="12">
               <v-card-title class="text-center">
-                <span class="text-uppercase text-h2">Patrick</span>
+                <span class="text-uppercase text-xl-h2 text-sm-text-body-2">Patrick</span>
               </v-card-title>
-              <v-card-subtitle class="text-center text-body-4">
+              <v-card-subtitle class="text-center text-xl-text-body-4 text-sm-text-body-1">
                 Desenvolvedor FullStack
               </v-card-subtitle>
             </v-col>
           </v-row>
 
-          <v-row class="d-flex flex-column  h-100" style="max-height: calc(100% - 96px);">
+          <v-row class="d-flex flex-column h-100" no-gutters>
             <v-col cols="12" md="6" class="d-flex flex-column " style="height: fit-content;">
               <div class="d-flex justify-start align-center" v-for="(stack, index) in stacks" :key="index"
                 style="margin-top: 2px; margin-bottom: 2px;">
-                <v-progress-circular :model-value="progress" :rotate="360" :size="70" :width="5" color="white"
+                <v-progress-circular :model-value="name === 'sm' ? progress = 100 : progress" :rotate="360"
+                  :size="name === 'sm' ? 30 : name === 'md' ? 60 : name === 'lg' ? 70 : 70" :width="5" color="white"
                   class="mr-3">
                   <template v-slot:default>
                     <div class="bg-white rounded-circle">
-                      <v-img :src="stack.img" contain class="rounded-circle" width="60" height="60" />
+                      <v-img :src="stack.img" contain class="rounded-circle"
+                        :width="name === 'sm' ? 20 : name === 'md' ? 50 : name === 'lg' ? 60 : 60"
+                        :height="name === 'sm' ? 20 : name === 'md' ? 50 : name === 'lg' ? 60 : 60" />
                     </div>
                   </template>
                 </v-progress-circular>
@@ -93,13 +111,16 @@ onMounted(() => {
         </v-card>
       </v-col>
 
-      <v-col cols="12" md="6" class="d-flex flex-column w-100">
-        <v-row class="d-flex w-100">
-          <v-col cols="12" md="6" class="d-flex align-stretch w-100 pl-0 pb-0 pr-0">
+      <v-col md="6" class="d-flex flex-column w-100" :class="name === 'md' || name === 'sm' || name === 'lg' ? 'pt-3' : ''"
+        :style="name === 'md' || name === 'sm' ? { minHeight: '150px' } : {}">
+        <v-row class="d-flex w-100" no-gutters>
+          <v-col md="6" class="d-flex align-stretch w-100 pl-0 pb-0"
+            :class="name === 'md' || name === 'sm' || name === 'lg' ? 'pr-3' : ''">
             <div class="column text-white text-uppercase d-flex align-stretch w-100" style="position: relative;">
-              <v-card class="mx-auto d-flex flex-column align-center justify-center text-center text-uppercase w-100"
+              <v-card class="d-flex flex-column align-center justify-center text-center text-uppercase w-100"
                 color="surface-variant" image="../assets/book-opac.jpg"
-                style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-left-radius: 0px;">
+                style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-left-radius: 0px;"
+                :style="name === 'md' || name === 'sm' || name === 'lg' ? { borderRadius: '4px' } : {}">
                 <template v-slot:title>
                   <span class="text-uppercase text-h5" style="font-weight: 300;">formação</span>
                 </template>
@@ -109,17 +130,16 @@ onMounted(() => {
                     mais detalhes
                   </v-btn>
                 </template>
-                <v-expand-transition class="overflow-y-auto">
-
-                </v-expand-transition>
               </v-card>
             </div>
           </v-col>
 
-          <v-col cols="12" md="6" class="d-flex align-stretch w-100 pl-0 pb-0">
-            <div class="column text-white text-uppercase d-flex align-stretch w-100" style="position: relative;">
-              <v-card class="mx-auto d-flex flex-column align-center justify-center text-center text-uppercase w-100"
-                color="surface-variant" image="../assets/xp-opac.jpg" style="border-bottom-right-radius: 0px;">
+          <v-col md="6" class="d-flex w-100 pl-0 pb-0 pr-0"
+            :style="name === 'md' || name === 'sm' || name === 'lg' ? { minHeight: '400px', paddingBottom: '16px' } : {}">
+            <div class="column text-white text-uppercase d-flex w-100" style="position: relative;">
+              <v-card class="d-flex flex-column align-center justify-center text-center text-uppercase w-100"
+                color="surface-variant" image="../assets/xp-opac.jpg" style="border-bottom-right-radius: 0px;"
+                :style="name === 'md' || name === 'sm' || name === 'lg' ? { borderRadius: '4px' } : {}">
                 <template v-slot:title>
                   <span class="text-uppercase text-h5" style="font-weight: 300;">experiência</span>
                 </template>
@@ -134,15 +154,16 @@ onMounted(() => {
           </v-col>
         </v-row>
 
-        <v-row class="d-flex justify-end align-end fill-height w-100"
+        <v-row class="d-flex justify-end align-end w-100" no-gutters
           style="max-height: 400px; min-width: 100%; border-bottom-right-radius: 5px;">
-          <v-col cols="12" class="pl-0 pt-0 h-100">
-            <v-carousel :show-arrows="hover" hide-delimiters cycle class="h-100 min-w-100" style="">
+          <v-col cols="12" class="pl-0 pt-0 h-100" :class="name === 'md' || name === 'sm' || name === 'lg' ? 'pt-3' : ''">
+            <v-carousel :show-arrows="hover" hide-delimiters cycle class="h-100 min-w-100"
+              :style="name === 'md' || name === 'sm' || name === 'lg' ? { borderRadius: '4px' } : {}">
               <v-carousel-item v-for="(item, index) in items" :key="index">
                 <v-img :src="item.src" class="h-100 w-100" cover>
                   <template #default>
                     <div class="overlay position-absolute w-100 h-100 d-flex flex-column align-center justify-center"
-                      style="top: 0;">
+                      :style="name === 'md' || name === 'sm' ? { borderRadius: '4px' } : {}" style="top: 0;">
                       <span class="text-h5 text-white text-uppercase px-4"
                         style="font-weight: 300; padding-top: 10px; padding-bottom: 10px;">{{ item.description }}</span>
                       <v-btn class="text-uppercase pa-2" color="white" variant="outlined"
@@ -151,7 +172,8 @@ onMounted(() => {
                       </v-btn>
                     </div>
 
-                    <v-dialog v-model="projetosDialog" max-width="500">
+                    <v-dialog v-model="projetosDialog" max-width="500"
+                      :style="name === 'md' ? { maxWidth: '400px' } : {}">
                       <v-card v-if="activeIndex === 0" class="w-100 h-100 d-flex flex-column" width="500"
                         style="top: 0; background-color: white;">
                         <v-card-text class="text-center text-black">
@@ -206,7 +228,7 @@ onMounted(() => {
       </v-col>
     </v-row>
     <!-- formacao dialog-->
-    <v-dialog v-model="formacaoDialog" max-width="500">
+    <v-dialog v-model="formacaoDialog" max-width="500" :style="name === 'md' ? { maxWidth: '400px' } : {}">
       <v-card class="w-100 h-100 d-flex flex-column " width="500"
         style="bottom: 0; background: rgba(255, 255, 255, 1);">
         <v-tabs v-model="tabFormacao" class="d-flex justify-between"
@@ -307,7 +329,7 @@ onMounted(() => {
     </v-dialog>
 
     <!-- experience dialog-->
-    <v-dialog v-model="experienciaDialog" max-width="500">
+    <v-dialog v-model="experienciaDialog" max-width="500" :style="name === 'md' ? { maxWidth: '400px' } : {}">
       <v-card class="w-100 h-100 d-flex flex-column " width="500"
         style="bottom: 0; background: rgba(255, 255, 255, 1);">
         <v-tabs v-model="tabExperiencia" class="d-flex justify-between"
