@@ -36,7 +36,7 @@ watch(sound, async (newVal, oldVal) => {
   if (newVal != oldVal) {
     noSound.value = true;
     showButton.value = false;
-    topValue.value = '37vh';
+    topValue.value = '45vh';
   }
 })
 </script>
