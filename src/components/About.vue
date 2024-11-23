@@ -75,7 +75,7 @@ const skillsCard = computed(() => {
         :style="width < 960 ? { marginBottom: '16px' } : {}">
         <v-card max-width="100%" :height="skillsCard" color="black" class="" elevation="0" image="../assets/eu-card.png"
           style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"
-          :style="width < 960 ? { borderRadius: '4px' } : ''">
+          :class="width < 960 ? '' : 'v-img__img--cover'">
           <v-row no-gutters>
             <v-col cols="12">
               <v-card-title class="text-center">
