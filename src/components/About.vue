@@ -71,10 +71,11 @@ const skillsCard = computed(() => {
 <template>
   <v-container fluid class="pt-0 pb-0">
     <v-row class="d-flex ma-0 fill-height" no-gutters>
-      <v-col cols="12" md="6" class="d-flex flex-column fill-height h-100 pr-0" :style="width < 960 ? { marginBottom: '16px' } : {}">
+      <v-col cols="12" md="6" class="d-flex flex-column fill-height h-100 pr-0"
+        :style="width < 960 ? { marginBottom: '16px' } : {}">
         <v-card max-width="100%" :height="skillsCard" color="black" class="" elevation="0" image="../assets/eu-card.png"
           style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"
-          :style="width < 960 ? { borderRadius: '4px'} : ''">
+          :style="width < 960 ? { borderRadius: '4px' } : ''">
           <v-row no-gutters>
             <v-col cols="12">
               <v-card-title class="text-center">
@@ -111,18 +112,16 @@ const skillsCard = computed(() => {
         </v-card>
       </v-col>
 
-      <v-col md="6" class="d-flex flex-column w-100"
-        :style="width < 960 ? { minHeight: '150px' } : {}">
+      <v-col md="6" class="d-flex flex-column w-100" :style="width < 960 ? { minHeight: '150px' } : {}">
         <v-row class="d-flex w-100" no-gutters>
-          <v-col md="6" class="d-flex align-stretch w-100 pl-0 pb-0"
-            :class="width < 960 ? 'pr-3' : ''">
+          <v-col md="6" class="d-flex align-stretch w-100 pl-0 pb-0" :class="width < 960 ? 'pr-3' : ''">
             <div class="column text-white text-uppercase d-flex align-stretch w-100" style="position: relative;">
               <v-card class="d-flex flex-column align-center justify-center text-center text-uppercase w-100"
-                color="surface-variant" image="../assets/book-opac.jpg"
-                style="border-radius: 0px;"
+                color="surface-variant" image="../assets/book-opac.jpg" style="border-radius: 0px;"
                 :style="width < 960 ? { borderRadius: '4px' } : {}">
                 <template v-slot:title>
-                  <span class="text-uppercase text-h5" :class="width < 960 ? 'text-h6' : ''" style="font-weight: 300;">formação</span>
+                  <span class="text-uppercase text-h5" :class="width < 960 ? 'text-h6' : ''"
+                    style="font-weight: 300;">formação</span>
                 </template>
                 <template v-slot:actions>
                   <v-btn class="text-uppercase" color="white" variant="outlined" block @click="formacaoDialog = true"
@@ -138,10 +137,12 @@ const skillsCard = computed(() => {
             :style="width < 960 ? { minHeight: '400px', paddingBottom: '16px' } : {}">
             <div class="column text-white text-uppercase d-flex w-100" style="position: relative;">
               <v-card class="d-flex flex-column align-center justify-center text-center text-uppercase w-100"
-                color="surface-variant" image="../assets/xp-opac.jpg" style="border-bottom-right-radius: 0px; border-top-left-radius: 0px;"
+                color="surface-variant" image="../assets/xp-opac.jpg"
+                style="border-bottom-right-radius: 0px; border-top-left-radius: 0px;"
                 :style="width < 960 ? { borderRadius: '4px' } : {}">
                 <template v-slot:title>
-                  <span class="text-uppercase text-h5" :class="width < 960 ? 'text-h6' : ''" style="font-weight: 300;">experiência</span>
+                  <span class="text-uppercase text-h5" :class="width < 960 ? 'text-h6' : ''"
+                    style="font-weight: 300;">experiência</span>
                 </template>
                 <template v-slot:actions>
                   <v-btn class="text-uppercase" color="white" variant="outlined" block @click="experienciaDialog = true"
@@ -154,16 +155,17 @@ const skillsCard = computed(() => {
           </v-col>
         </v-row>
 
-        <v-row class="d-flex justify-end align-end w-100" no-gutters
-          style="max-height: 400px; min-width: 100%;">
-          <v-col cols="12" class="pl-0 pt-0 h-100" :class="width < 960 ? 'pt-3' : ''" :style="width < 960 ? { marginBottom: '16px' } : {borderBottomRightRadius: '4px'}">
+        <v-row class="d-flex justify-end align-end w-100" no-gutters style="max-height: 400px; min-width: 100%;">
+          <v-col cols="12" class="pl-0 pt-0 h-100" :class="width < 960 ? 'pt-3' : ''"
+            :style="width < 960 ? { marginBottom: '16px' } : { borderBottomRightRadius: '4px' }">
             <v-carousel :show-arrows="hover" hide-delimiters cycle class="h-100 min-w-100"
-              :style="width < 960 ? { borderRadius: '4px' } : {borderBottomRightRadius: '4px'}">
+              :style="width < 960 ? { borderRadius: '4px' } : { borderBottomRightRadius: '4px' }">
               <v-carousel-item v-for="(item, index) in items" :key="index">
                 <v-img :src="item.src" class="h-100 w-100" cover>
                   <template #default>
                     <div class="overlay position-absolute w-100 h-100 d-flex flex-column align-center justify-center"
-                      :style="name === 'md' || name === 'sm' ? { borderRadius: '4px'} : { borderBottomRightRadius: '4px'}" style="top: 0;">
+                      :style="name === 'md' || name === 'sm' ? { borderRadius: '4px' } : { borderBottomRightRadius: '4px' }"
+                      style="top: 0;">
                       <span class="text-h5 text-white text-uppercase px-4" :class="width < 960 ? 'text-h6' : ''"
                         style="font-weight: 300; padding-top: 10px; padding-bottom: 10px;">{{ item.description }}</span>
                       <v-btn class="text-uppercase pa-2" color="white" variant="outlined"
