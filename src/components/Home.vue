@@ -3,6 +3,7 @@ import { onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useDisplay } from 'vuetify';
 import eu from '../assets/euBackground.png';
+import euLessResolution from '../assets/euLessResolution.png';
 
 const router = useRouter();
 const { width } = useDisplay()
@@ -43,7 +44,7 @@ watch(sound, async (newVal, oldVal) => {
 
 <template>
   <v-container fluid class="pa-0" style="height: 100vh; width: 100vw;">
-    <v-card style="height: 100%; width: 100%; border-radius: 0px;" :image="width < 800 ? '' : eu"
+    <v-card style="height: 100%; width: 100%; border-radius: 0px;" :image="width < 960 ? '' : (width < 1220 ? euLessResolution : eu)"
       :style="width < 960 ? { background: 'linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.9))' } : {}">
       <div
         style="position: relative; background: linear-gradient(to bottom, rgba(57, 0, 255, 0.4), rgba(0, 0, 0, 0.5))">
@@ -60,41 +61,41 @@ watch(sound, async (newVal, oldVal) => {
         </v-card-subtitle>
       </div>
 
-      <div class="rounded-circle border-md border-white" v-if="width < 800"
+      <div class="rounded-circle border-md border-white" v-if="width < 960"
         style="position: absolute; top: 20vh; left: 50%; transform: translateX(-50%);">
         <v-img :width="300" :height="300" aspect-ratio="16/9" cover class="rounded-circle"
           src="../assets/euCircle.png"></v-img>
       </div>
 
-      <v-card-text class="text-h5 text-uppercase" :class="width < 800 ? 'text-center' : ''"
+      <v-card-text class="text-h5 text-uppercase" :class="width < 960 ? 'text-center' : ''"
         style="position: absolute; top: 30vh; left: 5vw; max-width: 50%; color: white; padding: 20px; font-weight: 300; line-height: 1.5;"
         :style="{
-          top: width < 500 ? '63%' : (width < 800 ? '60%' : '30vh'),
-          left: width < 800 ? '50%' : '5vw',
-          transform: width < 800 ? 'translate(-50%, -50%)' : 'none',
-          minWidth: width < 800 ? '100%' : '',
-          fontSize: width < 500 ? '14px !important' : (width < 800 ? '20px !important' : '')
+          top: width < 500 ? '63%' : (width < 960 ? '60%' : '30vh'),
+          left: width < 960 ? '50%' : '5vw',
+          transform: width < 960 ? 'translate(-50%, -50%)' : 'none',
+          minWidth: width < 960 ? '100%' : '',
+          fontSize: width < 500 ? '14px !important' : (width < 960 ? '20px !important' : '')
         }">
         {{ animatedDescription }}
       </v-card-text>
 
       <v-card-actions :style="{
-        top: width < 500 ? '68%' : (width < 800 ? '65vh' : (width < 1920 ? '58vh' : topValue)),
-        left: width < 800 ? '50%' : '5vw',
-        width: width < 800 ? '85vw' : '50%',
+        top: width < 500 ? '68%' : (width < 960 ? '65vh' : (width < 1920 ? '58vh' : topValue)),
+        left: width < 960 ? '50%' : '5vw',
+        width: width < 960 ? '85vw' : '50%',
         padding: '20px',
         fontSize: '1vw',
         textTransform: 'uppercase',
         display: 'flex',
         justifyContent: 'center',
         position: 'absolute',
-        transform: width < 800 ? 'translateX(-50%)' : ''
+        transform: width < 960 ? 'translateX(-50%)' : ''
       }">
-        <v-container :style="width < 800 ? { minWidth: '50vw' } : {}">
+        <v-container :style="width < 960 ? { minWidth: '50vw' } : {}">
           <v-row>
             <v-col cols="12" class="w-100">
               <span v-if="showButton == true" class="d-flex justify-center text-white" :style="{
-                fontSize: width < 500 ? '2.5vw' : (width < 800 ? '2vw' : '16px')
+                fontSize: width < 500 ? '2.5vw' : (width < 960 ? '2vw' : '16px')
               }">
                 Gostaria de ouvir uma música para relaxar antes de continuarmos?
               </span>
@@ -102,24 +103,24 @@ watch(sound, async (newVal, oldVal) => {
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="6" :class="width < 800 ? 'py-0' : ''">
+            <v-col cols="6" :class="width < 960 ? 'py-0' : ''">
               <v-btn v-if="showButton == true" color="#0d47a1" @click="soundDialog"
                 style="background-color: white; min-height: 50px; font-size: 15px; width: 100%;"
-                :style="width < 800 ? { fontSize: '15px' } : {}">
+                :style="width < 960 ? { fontSize: '15px' } : {}">
                 sim
               </v-btn>
             </v-col>
-            <v-col cols="6" :class="width < 800 ? 'py-0' : ''">
+            <v-col cols="6" :class="width < 960 ? 'py-0' : ''">
               <v-btn v-if="showButton == true" color="#0d47a1" @click="noSoundDialog"
                 style="background-color: white; min-height: 50px; font-size: 15px; width: 100%;"
-                :style="width < 800 ? { fontSize: '15px' } : {}">
+                :style="width < 960 ? { fontSize: '15px' } : {}">
                 não
               </v-btn>
             </v-col>
             <v-col cols="12" class="mx-auto" style="display: flex; justify-content: center;">
               <v-btn v-if="noSound == true" color="#0d47a1" to="/aboutme"
                 style="background-color: white; min-height: 50px; font-size: 15px; width: 50%;"
-                :style="width < 800 ? { fontSize: '15px' } : {}">
+                :style="width < 960 ? { fontSize: '15px' } : {}">
                 Saiba mais
               </v-btn>
             </v-col>
