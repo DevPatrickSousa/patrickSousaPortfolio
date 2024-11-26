@@ -64,7 +64,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 button:hover {
   transform: scale(1.03);
   transition: all 0.3s ease;
