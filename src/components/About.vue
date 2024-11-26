@@ -79,9 +79,9 @@ const skillsCard = computed(() => {
           <v-row no-gutters>
             <v-col cols="12">
               <v-card-title class="text-center">
-                <span class="text-uppercase text-xl-h2 text-sm-text-body-2">Patrick</span>
+                <span class="text-uppercase text-h2 text-sm-text-body-2">Patrick</span>
               </v-card-title>
-              <v-card-subtitle class="text-center text-xl-text-body-4 text-sm-text-body-1">
+              <v-card-subtitle class="text-center text-uppercase text-xl-text-body-4 text-sm-text-body-1">
                 Desenvolvedor FullStack
               </v-card-subtitle>
             </v-col>
