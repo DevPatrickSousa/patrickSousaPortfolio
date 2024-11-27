@@ -4,9 +4,11 @@ import github from '../assets/github.png'
 import whatsapp from '../assets/whatsapp.ico'
 import linkedin from '../assets/linkedin.png'
 import { useDisplay } from 'vuetify';
+import { useI18n } from 'vue-i18n'
 import { ref, reactive } from 'vue';
 
 const { name, width } = useDisplay()
+const { t } = useI18n();
 const socials = reactive([
   { name: 'linkedin', description: 'Linkedin', imgSrc: linkedin, href: 'https://www.linkedin.com/in/devpatricksousa/' },
   { name: 'github', description: 'Github', imgSrc: github, href: 'https://github.com/DevPatrickSousa' },

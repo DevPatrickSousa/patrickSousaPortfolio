@@ -1,21 +1,28 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue';
-import { useRouter } from 'vue-router';
-import { useDisplay } from 'vuetify';
-import eu from '../assets/euBackground.png';
-import euLessResolution from '../assets/euLessResolution.png';
+import { onMounted, ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import { useDisplay } from 'vuetify'
+import { useI18n } from 'vue-i18n'
+import eu from '../assets/euBackground.png'
+import euLessResolution from '../assets/euLessResolution.png'
 
+const { t } = useI18n();
+const { locale } = useI18n()  
 const router = useRouter();
 const { width } = useDisplay()
 const description = 'Desenvolvedor Fullstack com experiência prática em soluções inovadoras para sistemas. Apaixonado por tecnologia, busco agregar valor aos projetos por meio da inovação e eficiência.';
-const animatedDescription = ref('');
-const showButton = ref(false);
-const sound = ref(false);
-const noSound = ref(false);
-const topValue = ref('45vh');
-const soundDialog = () => sound.value = true;
+const animatedDescription = ref('')
+const showButton = ref(false)
+const sound = ref(false)
+const noSound = ref(false)
+const topValue = ref('45vh')
+
+const soundDialog = () => sound.value = true
 const noSoundDialog = () => {
   router.push('/aboutme')
+}
+const changeLanguage = (lang) => {
+  locale.value = lang; 
 }
 
 onMounted(() => {
@@ -44,20 +51,36 @@ watch(sound, async (newVal, oldVal) => {
 
 <template>
   <v-container fluid class="pa-0" style="height: 100vh; width: 100vw;">
-    <v-card style="height: 100%; width: 100%; border-radius: 0px;" :image="width < 960 ? '' : (width < 1220 ? euLessResolution : eu)"
+    <v-card style="height: 100%; width: 100%; border-radius: 0px;"
+      :image="width < 960 ? '' : (width < 1220 ? euLessResolution : eu)"
       :style="width < 960 ? { background: 'linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.9))' } : {}">
+      <div class="d-flex justify-end align-center">
+        <v-btn-toggle v-model="locale">
+          <v-btn @click="changeLanguage('pt')">
+            <img src="../assets/pt-br.png" alt="social.description" 
+              :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
+          </v-btn>
+
+          <v-btn @click="changeLanguage('en')">
+            <img src="../assets/en-us.png" alt="social.description" 
+              :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
+          </v-btn>
+
+        </v-btn-toggle>
+      </div>
+
       <div
         style="position: relative; background: linear-gradient(to bottom, rgba(57, 0, 255, 0.4), rgba(0, 0, 0, 0.5))">
 
-        <v-card-title class="text-uppercase text-h2"
+        <v-card-title class="text-uppercase text-h2 pt-0"
           style="position: absolute; top: 3vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;">
           Patrick
         </v-card-title>
 
-        <v-card-subtitle class="text-body-2 text-uppercase"
+        <v-card-subtitle class="text-body-2 text-uppercase pt-0"
           style="position: absolute; top: 11vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;"
           :style="width < 800 ? { top: '12vh', } : {}">
-          Desenvolvedor FullStack
+          {{ t('home.subtitle') }}
         </v-card-subtitle>
       </div>
 
@@ -178,5 +201,9 @@ watch(sound, async (newVal, oldVal) => {
   color: white !important;
   transform: scale(1.05);
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.v-btn-group .v-btn {
+  background: none;
 }
 </style>

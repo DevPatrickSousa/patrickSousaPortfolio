@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, ref, computed, onMounted } from 'vue';
 import { useDisplay } from 'vuetify';
+import { useI18n } from 'vue-i18n'
 import flightSearch from '../assets/flightSearchUpdated.webp';
 import flightInfo from '../assets/flightInfo.webp';
 import appMakeUp from '../assets/appMakeUp.webp';
@@ -15,6 +16,7 @@ import rn from '../assets/rn.webp';
 import chrome from '../assets/chrome.png';
 
 const { name, mobile, width } = useDisplay()
+const { t } = useI18n();  
 const tabFormacao = ref(null)
 const tabExperiencia = ref(null)
 const progress = ref(0)
@@ -27,7 +29,7 @@ const items = ref([
   { src: flightSearch, description: 'flight search' },
   { src: flightInfo, description: 'flight info' },
   { src: appMakeUp, description: 'AppMakeUp' },
-]);
+])
 const stacks = reactive([
   { name: 'Javascript', rating: 'avançado', img: javascript },
   { name: 'Vue', rating: 'avançado', img: vue },
@@ -38,7 +40,7 @@ const stacks = reactive([
   { name: 'Django', rating: 'intermediário', img: django },
   { name: 'React native', rating: 'intermediário', img: rn },
   { name: 'Chrome extensions', rating: 'básico', img: chrome }
-]);
+])
 
 function openProjectsDialog(index) {
   activeIndex.value = index;
