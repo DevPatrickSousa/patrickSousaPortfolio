@@ -7,7 +7,7 @@
     <div class="d-flex text-white justify-center align-center">
       <v-btn to="/" variant="plain">Início</v-btn>
       <v-btn to="/aboutme" variant="plain">Sobre mim</v-btn>
-      <v-btn to="/contact" variant="plain">Contato</v-btn>
+      <v-btn to="/contact" variant="plain">Conecte-se</v-btn>
     </div>
     <v-spacer></v-spacer>
   </v-app-bar>

@@ -31,15 +31,14 @@
 </template>
 
 <script>
-
 export default {
   data: () => ({
     spanText: "enviar",
     snackbar: false,
-    text: "the form was sent successfully !!!",
+    text: "Formulário enviado com sucesso!",
     valid: true,
     emailRules: [
-      value => !!value || 'Required.',
+      value => !!value || 'Obrigatório.',
       value => (value || '').length <= 50 || 'Max 50 characters',
       value => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -47,7 +46,7 @@ export default {
       },
     ],
     textRules: [
-      value => !!value || 'Required.',
+      value => !!value || 'Obrigatório.',
       value => (value && value.length >= 3) || 'Min 3 characters',
     ],
 
