@@ -7,37 +7,35 @@ import eu from '../assets/euBackground.png'
 import euLessResolution from '../assets/euLessResolution.png'
 
 const { t } = useI18n();
-const { locale } = useI18n()  
+const { locale } = useI18n()
 const router = useRouter();
 const { width } = useDisplay()
-const description = 'Desenvolvedor Fullstack com experiência prática em soluções inovadoras para sistemas. Apaixonado por tecnologia, busco agregar valor aos projetos por meio da inovação e eficiência.';
 const animatedDescription = ref('')
 const showButton = ref(false)
 const sound = ref(false)
 const noSound = ref(false)
 const topValue = ref('45vh')
+const index = ref(0)
 
 const soundDialog = () => sound.value = true
 const noSoundDialog = () => {
   router.push('/aboutme')
 }
 const changeLanguage = (lang) => {
-  locale.value = lang; 
+  locale.value = lang;
 }
+const animateText = (text) => {
+  if (index.value < text.length) {
+    animatedDescription.value += text[index.value];
+    index.value++;
+    setTimeout(() => animateText(text), 20); 
+  } else {
+    showButton.value = true;
+  }
+};
 
 onMounted(() => {
-  let index = 0;
-
-  function animateText() {
-    if (index < description.length) {
-      animatedDescription.value += description[index];
-      index++;
-      setTimeout(animateText, 20);
-    } else {
-      showButton.value = true;
-    }
-  }
-  animateText();
+  animateText(t('home.welcome'));
 });
 
 watch(sound, async (newVal, oldVal) => {
@@ -47,6 +45,15 @@ watch(sound, async (newVal, oldVal) => {
     topValue.value = '45vh';
   }
 })
+
+watch(locale, (newLocale, oldLocale) => {
+  if (newLocale != oldLocale) {
+    animatedDescription.value = ''
+    index.value = 0
+    showButton.value = false;
+    animateText(t('home.welcome'))
+  }
+});
 </script>
 
 <template>
@@ -57,12 +64,12 @@ watch(sound, async (newVal, oldVal) => {
       <div class="d-flex justify-end align-center">
         <v-btn-toggle v-model="locale">
           <v-btn @click="changeLanguage('pt')">
-            <img src="../assets/pt-br.png" alt="social.description" 
+            <img src="../assets/pt-br.png" alt="social.description"
               :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
           </v-btn>
 
           <v-btn @click="changeLanguage('en')">
-            <img src="../assets/en-us.png" alt="social.description" 
+            <img src="../assets/en-us.png" alt="social.description"
               :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
           </v-btn>
 
@@ -120,7 +127,7 @@ watch(sound, async (newVal, oldVal) => {
               <span v-if="showButton == true" class="d-flex justify-center text-white" :style="{
                 fontSize: width < 500 ? '2.5vw' : (width < 960 ? '2vw' : '16px')
               }">
-                Gostaria de ouvir uma música para relaxar antes de continuarmos?
+                {{ t('home.music') }}
               </span>
 
             </v-col>
@@ -130,21 +137,21 @@ watch(sound, async (newVal, oldVal) => {
               <v-btn v-if="showButton == true" color="#0d47a1" @click="soundDialog"
                 style="background-color: white; min-height: 50px; font-size: 15px; width: 100%;"
                 :style="width < 960 ? { fontSize: '15px' } : {}">
-                sim
+                {{ t('home.buttons.confirm') }}
               </v-btn>
             </v-col>
             <v-col cols="6" :class="width < 960 ? 'py-0' : ''">
               <v-btn v-if="showButton == true" color="#0d47a1" @click="noSoundDialog"
                 style="background-color: white; min-height: 50px; font-size: 15px; width: 100%;"
                 :style="width < 960 ? { fontSize: '15px' } : {}">
-                não
+                {{ t('home.buttons.cancel') }}
               </v-btn>
             </v-col>
             <v-col cols="12" class="mx-auto" style="display: flex; justify-content: center;">
               <v-btn v-if="noSound == true" color="#0d47a1" to="/aboutme"
                 style="background-color: white; min-height: 50px; font-size: 15px; width: 50%;"
                 :style="width < 960 ? { fontSize: '15px' } : {}">
-                Saiba mais
+                {{ t('home.buttons.details') }}
               </v-btn>
             </v-col>
           </v-row>
@@ -203,7 +210,12 @@ watch(sound, async (newVal, oldVal) => {
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
-.v-btn-group .v-btn {
+.v-btn-group .v-btn,
+.v-btn-group .v-btn:hover,
+.v-btn-group .v-btn:active,
+.v-btn-group .v-btn:focus {
   background: none;
+  background-color: unset !important;
+  color: unset !important;
 }
 </style>
