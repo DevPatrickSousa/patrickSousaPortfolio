@@ -28,7 +28,7 @@ const animateText = (text) => {
   if (index.value < text.length) {
     animatedDescription.value += text[index.value];
     index.value++;
-    setTimeout(() => animateText(text), 20); 
+    setTimeout(() => animateText(text), 20);
   } else {
     showButton.value = true;
   }
@@ -80,38 +80,47 @@ watch(locale, (newLocale, oldLocale) => {
         style="position: relative; background: linear-gradient(to bottom, rgba(57, 0, 255, 0.4), rgba(0, 0, 0, 0.5))">
 
         <v-card-title class="text-uppercase text-h2 pt-0"
-          style="position: absolute; top: 3vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;" :style="width < 500 ? {top: '2vh'} : {}">
+          style="position: absolute; top: 3vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;"
+          :style="{
+            top: width < 400 ? '0vh' : (width < 500 ? '60%' : ''),
+
+          }">
           Patrick
         </v-card-title>
 
         <v-card-subtitle class="text-body-2 text-uppercase pt-0"
           style="position: absolute; top: 11vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;"
-          :style="width < 800 ? { top: '11vh', } : {}">
+          :style="{
+            top: width < 400 ? '11vh' : (width < 960 ? '8vh' : '8vh'),
+          }">
           {{ t('home.subtitle') }}
         </v-card-subtitle>
       </div>
 
       <div class="rounded-circle border-md border-white" v-if="width < 960"
-        style="position: absolute; top: 22vh; left: 50%; transform: translateX(-50%);">
-        <v-img :width="300" :height="300" aspect-ratio="16/9" cover class="rounded-circle"
-          src="../assets/euCircle.png"></v-img>
+        style="position: absolute; top: 22vh; left: 50%; transform: translateX(-50%);" :style="{
+          top: width < 400 ? '21.5vh' : (width < 500 ? '18vh' : (width < 960 ? '18vh' : '')),
+        }">
+        <v-img :width="width < 400 ? 200 : 320" :height="width < 400 ? 200 : 320" aspect-ratio="16/9" cover
+          class="rounded-circle" src="../assets/euCircle.png"></v-img>
       </div>
 
       <v-card-text class="text-h5 text-uppercase" :class="width < 960 ? 'text-center' : ''"
         style="position: absolute; top: 30vh; left: 5vw; max-width: 50%; color: white; padding: 20px; font-weight: 300; line-height: 1.5;"
         :style="{
-          top: width < 500 ? '70%' : (width < 960 ? '60%' : '30vh'),
+          top: width < 400 ? '60vh' : (width < 500 ? '60vh' : (width < 960 ? '60%' : '30vh')),
           left: width < 960 ? '50%' : '5vw',
           transform: width < 960 ? 'translate(-50%, -50%)' : 'none',
           minWidth: width < 960 ? '100%' : '',
-          fontSize: width < 500 ? '14px !important' : (width < 960 ? '20px !important' : '')
+          fontSize: width < 600 ? '14px !important' : (width < 960 ? '20px !important' : '')
         }">
         {{ animatedDescription }}
       </v-card-text>
 
       <v-card-actions :style="{
-        top: width < 500 ? '75%' : (width < 960 ? '65vh' : (width < 1920 ? '58vh' : topValue)),
+        top: width < 400 ? '67vh' : (width < 960 ? '65vh' : (width < 1920 ? '58vh' : topValue)),
         left: width < 960 ? '50%' : '5vw',
+        width: width < 400 ? '67vh' : (width < 960 ? '65vh' : (width < 1920 ? '58vh' : topValue)),
         width: width < 960 ? '85vw' : '50%',
         padding: '20px',
         fontSize: '1vw',
