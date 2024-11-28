@@ -84,7 +84,7 @@ const skillsCard = computed(() => {
                 <span class="text-uppercase text-h2 text-sm-text-body-2">Patrick</span>
               </v-card-title>
               <v-card-subtitle class="text-center text-uppercase text-xl-text-body-4 text-sm-text-body-1">
-                Desenvolvedor FullStack
+               {{ t('about.subtitle') }}
               </v-card-subtitle>
             </v-col>
           </v-row>
@@ -123,12 +123,12 @@ const skillsCard = computed(() => {
                 :style="width < 960 ? { borderRadius: '4px' } : {}">
                 <template v-slot:title>
                   <span class="text-uppercase text-h5" :class="width < 960 ? 'text-h6' : ''"
-                    style="font-weight: 300;">formação</span>
+                    style="font-weight: 300;">{{ t('about.firstCard') }}</span>
                 </template>
                 <template v-slot:actions>
                   <v-btn class="text-uppercase" color="white" variant="outlined" block @click="formacaoDialog = true"
                     style="font-weight: 300;">
-                    mais detalhes
+                    {{ t('about.buttons.moreDetails') }}
                   </v-btn>
                 </template>
               </v-card>
@@ -144,12 +144,12 @@ const skillsCard = computed(() => {
                 :style="width < 960 ? { borderRadius: '4px' } : {}">
                 <template v-slot:title>
                   <span class="text-uppercase text-h5" :class="width < 960 ? 'text-h6' : ''"
-                    style="font-weight: 300;">experiência</span>
+                    style="font-weight: 300;">{{ t('about.secondCard') }}</span>
                 </template>
                 <template v-slot:actions>
                   <v-btn class="text-uppercase" color="white" variant="outlined" block @click="experienciaDialog = true"
                     style="font-weight: 300;">
-                    mais detalhes
+                    {{ t('about.buttons.moreDetails') }}
                   </v-btn>
                 </template>
               </v-card>
@@ -172,7 +172,7 @@ const skillsCard = computed(() => {
                         style="font-weight: 300; padding-top: 10px; padding-bottom: 10px;">{{ item.description }}</span>
                       <v-btn class="text-uppercase pa-2" color="white" variant="outlined"
                         @click="openProjectsDialog(index)" style="font-weight: 300;">
-                        mais detalhes
+                        {{ t('about.buttons.moreDetails') }}
                       </v-btn>
                     </div>
 
@@ -188,7 +188,7 @@ const skillsCard = computed(() => {
                         </v-card-text>
                         <v-card-actions class="justify-center">
                           <v-btn color="primary" class="text-uppercase" @click="projetosDialog = false">
-                            Menos detalhes
+                            {{ t('about.buttons.lessDetails') }}
                           </v-btn>
                         </v-card-actions>
                       </v-card>
@@ -203,7 +203,7 @@ const skillsCard = computed(() => {
                         </v-card-text>
                         <v-card-actions class="justify-center">
                           <v-btn color="primary" class="text-uppercase" @click="projetosDialog = false">
-                            Menos detalhes
+                            {{ t('about.buttons.lessDetails') }}
                           </v-btn>
                         </v-card-actions>
                       </v-card>
@@ -218,7 +218,7 @@ const skillsCard = computed(() => {
                         </v-card-text>
                         <v-card-actions class="justify-center">
                           <v-btn color="primary" class="text-uppercase" @click="projetosDialog = false">
-                            Menos detalhes
+                            {{ t('about.buttons.lessDetails') }}
                           </v-btn>
                         </v-card-actions>
                       </v-card>
@@ -326,7 +326,7 @@ const skillsCard = computed(() => {
         <v-card-actions class="mt-auto pa-3">
           <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
             @click="formacaoDialog = false" style="font-weight: 300;">
-            menos detalhes
+            {{ t('about.buttons.lessDetails') }}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -443,7 +443,7 @@ const skillsCard = computed(() => {
         <v-card-actions class="mt-auto pa-3">
           <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
             @click="experienciaDialog = false" style="font-weight: 300;">
-            menos detalhes
+            {{ t('about.buttons.lessDetails') }}
           </v-btn>
         </v-card-actions>
       </v-card>

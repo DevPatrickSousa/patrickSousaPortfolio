@@ -18,6 +18,12 @@ export default createI18n({
       },
       about: {
         subtitle: 'Desenvolvedor fullStack',
+        firstCard: 'Formação',
+        secondCard: 'Experiência',
+        buttons: {
+          moreDetails: 'Mais detalhes',
+          lessDetails: 'Menos detalhes',
+        }
       },
       contact: {
 
@@ -36,6 +42,12 @@ export default createI18n({
       },
       about: {
         subtitle: 'FullStack Developer',
+        firstCard: 'Education',
+        secondCard: 'Experience',
+        buttons: {
+          moreDetails: 'More details',
+          lessDetails: 'Less details',
+        }
       },
       contact: {
       }
