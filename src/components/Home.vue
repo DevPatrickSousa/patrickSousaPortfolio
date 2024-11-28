@@ -80,19 +80,19 @@ watch(locale, (newLocale, oldLocale) => {
         style="position: relative; background: linear-gradient(to bottom, rgba(57, 0, 255, 0.4), rgba(0, 0, 0, 0.5))">
 
         <v-card-title class="text-uppercase text-h2 pt-0"
-          style="position: absolute; top: 3vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;">
+          style="position: absolute; top: 3vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;" :style="width < 500 ? {top: '2vh'} : {}">
           Patrick
         </v-card-title>
 
         <v-card-subtitle class="text-body-2 text-uppercase pt-0"
           style="position: absolute; top: 11vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;"
-          :style="width < 800 ? { top: '12vh', } : {}">
+          :style="width < 800 ? { top: '11vh', } : {}">
           {{ t('home.subtitle') }}
         </v-card-subtitle>
       </div>
 
       <div class="rounded-circle border-md border-white" v-if="width < 960"
-        style="position: absolute; top: 20vh; left: 50%; transform: translateX(-50%);">
+        style="position: absolute; top: 22vh; left: 50%; transform: translateX(-50%);">
         <v-img :width="300" :height="300" aspect-ratio="16/9" cover class="rounded-circle"
           src="../assets/euCircle.png"></v-img>
       </div>
@@ -100,7 +100,7 @@ watch(locale, (newLocale, oldLocale) => {
       <v-card-text class="text-h5 text-uppercase" :class="width < 960 ? 'text-center' : ''"
         style="position: absolute; top: 30vh; left: 5vw; max-width: 50%; color: white; padding: 20px; font-weight: 300; line-height: 1.5;"
         :style="{
-          top: width < 500 ? '63%' : (width < 960 ? '60%' : '30vh'),
+          top: width < 500 ? '70%' : (width < 960 ? '60%' : '30vh'),
           left: width < 960 ? '50%' : '5vw',
           transform: width < 960 ? 'translate(-50%, -50%)' : 'none',
           minWidth: width < 960 ? '100%' : '',
@@ -110,7 +110,7 @@ watch(locale, (newLocale, oldLocale) => {
       </v-card-text>
 
       <v-card-actions :style="{
-        top: width < 500 ? '68%' : (width < 960 ? '65vh' : (width < 1920 ? '58vh' : topValue)),
+        top: width < 500 ? '75%' : (width < 960 ? '65vh' : (width < 1920 ? '58vh' : topValue)),
         left: width < 960 ? '50%' : '5vw',
         width: width < 960 ? '85vw' : '50%',
         padding: '20px',
