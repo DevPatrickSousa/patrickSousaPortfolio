@@ -60,7 +60,7 @@ watch(locale, (newLocale, oldLocale) => {
   <v-container fluid class="pa-0" style="height: 100vh; width: 100vw;">
     <v-card style="height: 100%; width: 100%; border-radius: 0px;"
       :image="width < 960 ? '' : (width < 1220 ? euLessResolution : eu)"
-      :style="width < 960 ? { background: '#9AB4D6' } : {}">
+      :style="width < 960 ? { background: '#7492C8' } : {}">
       <div class="d-flex justify-end align-center">
         <v-btn-toggle v-model="locale">
           <v-btn @click="changeLanguage('pt')">
