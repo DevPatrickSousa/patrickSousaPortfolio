@@ -333,7 +333,7 @@ const skillsCard = computed(() => {
 
         <v-card-actions class="mt-auto pa-3">
           <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
-            @click="formacaoDialog = false" style="font-weight: 200;">
+            @click="formacaoDialog = false" style="font-weight: 400;">
             {{ t('about.buttons.lessDetails') }}
           </v-btn>
         </v-card-actions>
@@ -346,8 +346,8 @@ const skillsCard = computed(() => {
         style="bottom: 0; background: rgba(255, 255, 255, 1);">
         <v-tabs v-model="tabExperiencia" class="d-flex justify-between"
           style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1));">
-          <v-tab value="skyler" class="text-white flex-grow-1 text-center">Skyler</v-tab>
-          <v-tab value="prefeitura" class="text-white flex-grow-1 text-center">Prefeitura de SPB</v-tab>
+          <v-tab value="skyler" class="text-white flex-grow-1 text-center">{{ t('about.secondCard.details.skylerDetails.name') }}</v-tab>
+          <v-tab value="prefeitura" class="text-white flex-grow-1 text-center">{{ t('about.secondCard.details.spbDetails.name') }}</v-tab>
         </v-tabs>
 
         <v-card-text class="pb-0 px-0">
@@ -366,21 +366,21 @@ const skillsCard = computed(() => {
                 <v-tabs-window-item value="skyler">
                   <v-row align="center">
                     <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">Empresa:</span>
+                      <span class="text-body-2 px-2">{{ t('about.secondCard.details.skylerDetails.firstRowKey') }}</span>
                     </v-col>
 
                     <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2 text-center">Skyler</span>
+                      <span class="text-body-2 text-center">{{ t('about.secondCard.details.skylerDetails.firstRowValue') }}</span>
                     </v-col>
                   </v-row>
 
                   <v-row align="center" class="mt-0">
                     <v-col cols="6" style="border-right: 4.5px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">Período:</span>
+                      <span class="text-body-2 px-2">{{ t('about.secondCard.details.skylerDetails.secondRowKey') }}</span>
                     </v-col>
 
                     <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2">04/2023 - 09/2024</span>
+                      <span class="text-body-2">{{ t('about.secondCard.details.skylerDetails.secondRowValue') }}</span>
                     </v-col>
                   </v-row>
 
@@ -388,18 +388,7 @@ const skillsCard = computed(() => {
 
                   <v-row>
                     <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 px-2 py-1">Implementei funcionalidades no sistema Skyler
-                        para
-                        automatizar tarefas, incluindo um controle financeiro para facilitar a gestão e
-                        melhorar a
-                        experiência do usuário. Conduzi pesquisas para aprimorar o desempenho e solucionei
-                        problemas
-                        dentro dos prazos, utilizando GitLab para versionamento e gestão. As principais
-                        tecnologias
-                        utilizadas foram Vue.js, Nuxt, Vuetify, PrimeVue e Django REST. Também criei uma
-                        extensão
-                        Chrome para automatizar processos específicos.
-                      </span>
+                      <span class="text-body-2 px-2 py-1">{{ t('about.secondCard.details.skylerDetails.description') }}</span>
                     </v-col>
                   </v-row>
                 </v-tabs-window-item>
@@ -407,21 +396,21 @@ const skillsCard = computed(() => {
                 <v-tabs-window-item value="prefeitura">
                   <v-row align="center">
                     <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">Empresa:</span>
+                      <span class="text-body-2 px-2">{{ t('about.secondCard.details.spbDetails.firstRowKey') }}</span>
                     </v-col>
 
                     <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2 ">Prefeitura de SPB</span>
+                      <span class="text-body-2 ">{{ t('about.secondCard.details.spbDetails.firstRowValue') }}</span>
                     </v-col>
                   </v-row>
 
                   <v-row align="center" class="mt-0">
                     <v-col style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">Período:</span>
+                      <span class="text-body-2 px-2">{{ t('about.secondCard.details.spbDetails.secondRowKey') }}</span>
                     </v-col>
 
                     <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2">03/2021 - 12/2022</span>
+                      <span class="text-body-2">{{ t('about.secondCard.details.spbDetails.secondRowValue') }}</span>
                     </v-col>
                   </v-row>
 
@@ -429,17 +418,7 @@ const skillsCard = computed(() => {
 
                   <v-row>
                     <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 text-justify px-2 py-1">Responsável por testar equipamentos de rede
-                        (roteadores,
-                        switches, VOIP, etc.), filtrar problemas relatados no sistema e encaminhá-los para a
-                        equipe
-                        técnica com as informações necessárias. Além disso, separava materiais para
-                        infraestrutura
-                        conforme as especificações da equipe e realizava atendimento remoto aos servidores,
-                        utilizando
-                        ferramentas ITSM para diagnosticar e solucionar problemas, tanto em sistemas
-                        operacionais
-                        quanto em outros sistemas específicos.</span>
+                      <span class="text-body-2 text-justify px-2 py-1">{{ t('about.secondCard.details.spbDetails.description') }}</span>
                     </v-col>
                   </v-row>
                 </v-tabs-window-item>
@@ -450,7 +429,7 @@ const skillsCard = computed(() => {
 
         <v-card-actions class="mt-auto pa-3">
           <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
-            @click="experienciaDialog = false" style="font-weight: 200;">
+            @click="experienciaDialog = false" style="font-weight: 400;">
             {{ t('about.buttons.lessDetails') }}
           </v-btn>
         </v-card-actions>
