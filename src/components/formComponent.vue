@@ -1,72 +1,96 @@
+<script setup>
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const formRef = ref(null)
+const formValid = ref(false)
+const snackbar = ref(false)
+const buttonLoading = ref(false)
+const emailRules = ref([
+  value => {
+    const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    if (pattern.test(value)) return true
+    return t('contact.form.rules.invalidEmail')
+  },
+])
+const textRules = ref([
+  value => {
+    if (value && value.length >= 3) return true
+    return t('contact.form.rules.minCharacters')
+  }
+])
+
+const validate = async () => {
+  const { valid } = await formRef.value.validate()
+
+  if (valid) {
+    buttonLoading.value = true
+    const formElement = formRef.value.$el  // Acessa o DOM do formulário
+    const formData = new FormData(formElement)
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/patrickseven22@hotmail.com', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (response.ok) {
+        snackbar.value = true
+        formValid.value = true
+        buttonLoading.value = false
+      }
+    } catch (error) {
+      formValid.value = false
+      snackbar.value = true
+      buttonLoading.value = false
+    }
+  }
+}
+</script>
+
 <template>
   <v-container class="fill-height">
-    <v-responsive class="d-flex align-center text-center fill-height ">
-      <v-form fast-fail ref="form" action="https://formsubmit.co/patrickseven22@hotmail.com" method="POST">
-        <v-text-field :rules="textRules" class="my-3 rounded-xl" hide-details="auto" label="nome" type="text"
-          name="name" clearable required rounded variant="outlined">
-        </v-text-field>
-
-        <v-text-field :rules="emailRules" class="my-3 rounded-xl border-thin" hide-details="auto" label="Email"
-          type="email" name="email" clearable placeholder="example@hotmail.com" required rounded variant="outlined">
-        </v-text-field>
-
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://patrick-sousa.vercel.app/">
-
-        <v-textarea :rules="textRules" class="my-3" label="Mensagem" name="message" clearable required rounded
+    <v-responsive class="d-flex align-center text-center fill-height">
+      <v-form ref="formRef" @submit.prevent="validate">
+        <v-text-field :rules="textRules" class="py-3 rounded-xl" hide-details="auto"
+          :label="t('contact.form.formInputName')" type="text" name="name" clearable required rounded
           variant="outlined">
+        </v-text-field>
+
+        <v-text-field :rules="emailRules" class="py-3 rounded-xl" hide-details="auto"
+          :label="t('contact.form.formInputEmail')" type="email" name="email" clearable required rounded
+          variant="outlined">
+        </v-text-field>
+
+        <v-textarea :rules="textRules" class="py-3" :label="t('contact.form.formInputMessage')" name="message" clearable
+          required rounded variant="outlined">
         </v-textarea>
 
-        <v-btn size="small" rounded="pill" color="#133B7B" variant="outlined" class="" width="167px" height="34px"
-          type="submit" @click="validate">
-          <span class="">{{ spanText }}</span>
+        <v-btn :loading="buttonLoading" size="small" rounded="pill" color="#133B7B" variant="outlined" class=""
+          width="167px" height="34px" type="submit">
+          <span>{{ t('contact.form.formButton') }}</span>
         </v-btn>
 
-        <v-snackbar v-model="snackbar" color="success">
-          <span class="text-center"><strong>{{ text }}</strong></span>
+        <v-snackbar v-model="snackbar" :color="formValid ? 'success' : 'error'">
+          <span v-if="formValid" class="text-center"><strong>{{ t('contact.form.snackBarText') }}</strong></span>
+          <span v-else class="text-center"><strong>error</strong></span>
         </v-snackbar>
       </v-form>
     </v-responsive>
   </v-container>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    spanText: "enviar",
-    snackbar: false,
-    text: "Formulário enviado com sucesso!",
-    valid: true,
-    emailRules: [
-      value => !!value || 'Obrigatório.',
-      value => (value || '').length <= 50 || 'Max 50 characters',
-      value => {
-        const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        return pattern.test(value) || 'Invalid e-mail.'
-      },
-    ],
-    textRules: [
-      value => !!value || 'Obrigatório.',
-      value => (value && value.length >= 3) || 'Min 3 characters',
-    ],
-
-  }),
-
-  methods: {
-    async validate() {
-      const { valid } = await this.$refs.form.validate()
-
-      if (valid) this.snackbar = true
-    },
-
-  },
-}
-</script>
-
 <style scoped>
 button:hover {
   transition: all 0.5s ease;
   background-color: #17366A;
   color: white !important;
+}
+
+.v-text-field .v-field--no-label input, .v-text-field .v-field--active input {
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
 }
 </style>
