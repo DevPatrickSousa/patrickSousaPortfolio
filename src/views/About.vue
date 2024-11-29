@@ -1,10 +1,8 @@
 <template>
   <v-app>
-    <Menu />
-    <v-main>
+      <Menu />
       <aboutMeComponent />
-    </v-main>
-    <Footer />
+      <Footer />
   </v-app>
 </template>
 
@@ -15,7 +13,5 @@ import Footer from '@/components/Footer.vue';
 </script>
 
 <style scoped>
-.v-main {
-  background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(232, 240, 242, 0.7));
-}
+
 </style>
