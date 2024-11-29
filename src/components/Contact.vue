@@ -18,9 +18,7 @@ const socials = reactive([
 
 <template>
   <v-container fluid class="fill-height pa-0" :style="width > 1040 ? { backgroundImage: teste } : {}">
-    <v-row class="fill-height" no-gutters="" style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1)); box-shadow: 10px -1px 5px 1px rgba(255,255,255,0.75);
-        -webkit-box-shadow: 10px -1px 5px 1px rgba(255,255,255,0.75);
-        -moz-box-shadow: 10px -1px 5px 1px rgba(255,255,255,0.75);">
+    <v-row class="fill-height" no-gutters="" style="background: radial-gradient(at center, #0E47A1, #1E1D1D)">
       <v-col sm="12" md="8" lg="8" class="d-flex flex-column justify-center">
         <div class="d-flex flex-column justify-center align-center">
           <span class="text-center text-h5 text-uppercase text-white"
@@ -43,7 +41,7 @@ const socials = reactive([
 
       <v-col sm="12" md="4" lg="4" class="d-flex justify-center align-center text-center">
         <v-card class="rounded-xl" :width="width > 1040 ? 400 : 300" elevation="16">
-          <v-card-title style=" background-color: #7492C8;">
+          <v-card-title style=" background-color: #17366A;">
             <span v-if="width > 1040" class="text-h6 text-white" style="font-weight: 300;">Dúvidas? Envie uma
               mensagem.</span>
             <span v-if="width < 1040" class="text-h6 text-white" style="font-weight: 300;">Dúvidas?</span>
