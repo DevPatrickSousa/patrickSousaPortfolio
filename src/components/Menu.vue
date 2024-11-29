@@ -1,10 +1,14 @@
 <script setup>
+import pt from '../assets/pt-br.png'
+import en from '../assets/en-us.png'
 import { useI18n } from 'vue-i18n'
+import { useDisplay } from 'vuetify'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
+const { width } = useDisplay()
 
 const changeLanguage = (lang) => {
-  locale.value = lang; 
+  locale.value = lang;
 }
 </script>
 
@@ -13,25 +17,37 @@ const changeLanguage = (lang) => {
     <div class="d-flex text-white justify-space-between align-center" style="width: 100%;">
       <div></div>
 
-      <div class="d-flex text-white justify-center align-center" style="flex-grow: 1;">
-        <v-btn to="/" variant="plain">Início</v-btn>
-        <v-btn to="/aboutme" variant="plain">Sobre mim</v-btn>
-        <v-btn to="/contact" variant="plain">Conecte-se</v-btn>
+      <div class="d-flex text-white justify-center align-center" style="flex-grow: 1;" >
+        <v-btn to="/" variant="plain" :style="width < 500 ? {fontSize: '12px !important'} : {}">{{ t('menu.firstRoute') }}</v-btn>
+        <v-btn to="/aboutme" variant="plain" :style="width < 500 ? {fontSize: '12px !important'} : {}">{{ t('menu.secondRoute') }}</v-btn>
+        <v-btn to="/contact" variant="plain" :style="width < 500 ? {fontSize: '12px !important'} : {}">{{ t('menu.thirdRoute') }}</v-btn>
       </div>
 
-      <div class="px-3">
-        <v-btn-toggle v-model="locale">
-          <v-btn @click="changeLanguage('pt')">
-            <img src="../assets/pt-br.png" alt="social.description" 
-              :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
-          </v-btn>
+      <div class="pr-3">
+        <v-menu>
+          <template v-slot:activator="{ props }">
+            <v-btn v-bind="props">
+              <img :src="locale == 'pt'? pt : en" alt="social.description"
+                :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
+            </v-btn>
+          </template>
 
-          <v-btn @click="changeLanguage('en')">
-            <img src="../assets/en-us.png" alt="social.description" 
-              :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
-          </v-btn>
+          <v-list>
+            <v-list-item v-if="locale === 'en'">
+              <v-btn @click="changeLanguage('pt')">
+                <img src="../assets/pt-br.png" alt="social.description"
+                  :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
+              </v-btn>
+            </v-list-item>
 
-        </v-btn-toggle>
+            <v-list-item v-if="locale === 'pt'">
+              <v-btn @click="changeLanguage('en')">
+                <img src="../assets/en-us.png" alt="social.description"
+                  :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
+              </v-btn>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </div>
     </div>
   </v-app-bar>
@@ -44,7 +60,4 @@ const changeLanguage = (lang) => {
   border: none !important;
 }
 
-.v-btn-group .v-btn {
-  background: none;
-}
 </style>

@@ -1,10 +1,12 @@
 <script setup>
+import eu from '../assets/euBackground.png'
+import euLessResolution from '../assets/euLessResolution.png'
+import pt from '../assets/pt-br.png'
+import en from '../assets/en-us.png'
 import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useDisplay } from 'vuetify'
 import { useI18n } from 'vue-i18n'
-import eu from '../assets/euBackground.png'
-import euLessResolution from '../assets/euLessResolution.png'
 
 const { t } = useI18n();
 const { locale } = useI18n()
@@ -62,28 +64,39 @@ watch(locale, (newLocale, oldLocale) => {
       :image="width < 960 ? '' : (width < 1220 ? euLessResolution : eu)"
       :style="width < 960 ? { background: '#0E47A1', background: 'radial-gradient(at center, #0E47A1, #1E1D1D)' } : {}">
       <div class="d-flex justify-end align-center">
-        <v-btn-toggle v-model="locale">
-          <v-btn @click="changeLanguage('pt')">
-            <img src="../assets/pt-br.png" alt="social.description"
-              :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
-          </v-btn>
+        <v-menu>
+          <template v-slot:activator="{ props }">
+            <v-btn class="mr-3" v-bind="props" style="top: 7vh; background: none !important;">
+              <img :src="locale == 'pt' ? pt : en" alt="social.description"
+                :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
+            </v-btn>
+          </template>
 
-          <v-btn @click="changeLanguage('en')">
-            <img src="../assets/en-us.png" alt="social.description"
-              :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
-          </v-btn>
+          <v-list>
+            <v-list-item v-if="locale === 'en'">
+              <v-btn @click="changeLanguage('pt')">
+                <img src="../assets/pt-br.png" alt="social.description"
+                  :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
+              </v-btn>
+            </v-list-item>
 
-        </v-btn-toggle>
+            <v-list-item v-if="locale === 'pt'">
+              <v-btn @click="changeLanguage('en')">
+                <img src="../assets/en-us.png" alt="social.description"
+                  :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
+              </v-btn>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </div>
 
       <div
         style="position: relative; background: linear-gradient(to bottom, rgba(57, 0, 255, 0.4), rgba(0, 0, 0, 0.5))">
 
         <v-card-title class="text-uppercase text-h2 pt-0"
-          style="position: absolute; top: 3vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 200;"
+          style="position: absolute; top: 3vh; left: 50%; transform: translateX(-50%); width: fit-content; color: white; text-align: center; padding: 20px; font-weight: 200;"
           :style="{
             top: width < 400 ? '0vh' : (width < 500 ? '60%' : ''),
-
           }">
           Patrick
         </v-card-title>
@@ -136,7 +149,7 @@ watch(locale, (newLocale, oldLocale) => {
               <span v-if="showButton == true" class="d-flex justify-center text-white" :style="{
                 fontSize: width < 500 ? '2.5vw' : (width < 960 ? '2vw' : '16px'),
                 fontWeight: 300
-                
+
               }">
                 {{ t('home.music') }}
               </span>
@@ -219,14 +232,5 @@ watch(locale, (newLocale, oldLocale) => {
   color: white !important;
   transform: scale(1.05);
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-}
-
-.v-btn-group .v-btn,
-.v-btn-group .v-btn:hover,
-.v-btn-group .v-btn:active,
-.v-btn-group .v-btn:focus {
-  background: none;
-  background-color: unset !important;
-  color: unset !important;
 }
 </style>
