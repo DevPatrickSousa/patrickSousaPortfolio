@@ -6,6 +6,11 @@ export default createI18n({
   fallbackLocale: ["pt", 'en'],
   messages: {
     pt: {
+      menu: {
+        firstRoute: 'Início',
+        secondRoute: 'Sobre mim',
+        thirdRoute: 'Conecte-se'
+      },
       home: {
         subtitle: 'Desenvolvedor fullStack',
         welcome: 'Desenvolvedor Fullstack com experiência prática em soluções inovadoras para sistemas. Apaixonado por tecnologia, busco agregar valor aos projetos por meio da inovação e eficiência.',
@@ -71,6 +76,11 @@ export default createI18n({
       }
     },
     en: {
+      menu: {
+        firstRoute: 'Home',
+        secondRoute: 'About me',
+        thirdRoute: 'Get in touch'
+      },
       home: {
         subtitle: 'FullStack Developer',
         welcome: 'Fullstack Developer with hands-on experience in innovative solutions for systems. Passionate about technology, I strive to add value to projects through innovation and efficiency.',
