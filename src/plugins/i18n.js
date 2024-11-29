@@ -9,7 +9,7 @@ export default createI18n({
       home: {
         subtitle: 'Desenvolvedor fullStack',
         welcome: 'Desenvolvedor Fullstack com experiência prática em soluções inovadoras para sistemas. Apaixonado por tecnologia, busco agregar valor aos projetos por meio da inovação e eficiência.',
-        music: 'Gostaria de ouvir uma música para relaxar antes de continuarmos?',
+        music: 'Gostaria de ouvir uma música antes de continuarmos?',
         buttons: {
           confirm: 'Sim',
           cancel: 'Não',
