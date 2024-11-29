@@ -66,24 +66,24 @@ watch(locale, (newLocale, oldLocale) => {
       <div class="d-flex justify-end align-center">
         <v-menu>
           <template v-slot:activator="{ props }">
-            <v-btn class="mr-3" v-bind="props" style="top: 7vh; background: none !important;">
+            <v-btn variant="plain" class="mr-3" v-bind="props" style="top: 7vh; background: none !important;">
               <img :src="locale == 'pt' ? pt : en" alt="social.description"
                 :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
             </v-btn>
           </template>
 
           <v-list>
-            <v-list-item v-if="locale === 'en'">
-              <v-btn @click="changeLanguage('pt')">
-                <img src="../assets/pt-br.png" alt="social.description"
-                  :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
-              </v-btn>
-            </v-list-item>
-
             <v-list-item v-if="locale === 'pt'">
               <v-btn @click="changeLanguage('en')">
                 <img src="../assets/en-us.png" alt="social.description"
-                  :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
+                  :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }" />
+              </v-btn>
+            </v-list-item>
+
+            <v-list-item v-if="locale === 'en'">
+              <v-btn @click="changeLanguage('pt')">
+                <img src="../assets/pt-br.png" alt="social.description"
+                  :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }" />
               </v-btn>
             </v-list-item>
           </v-list>
@@ -233,7 +233,18 @@ watch(locale, (newLocale, oldLocale) => {
   transform: scale(1.05);
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
-.v-list-item .v-btn:hover, .v-btn:active,.v-btn:focus{
+
+.v-list-item .v-btn:hover,
+.v-btn:active,
+.v-btn:focus {
   background-color: none !important;
+}
+
+.v-btn--variant-elevated {
+  box-shadow: none !important;
+}
+
+.v-list .v-list-item .v-btn:hover {
+  background: none !important;
 }
 </style>

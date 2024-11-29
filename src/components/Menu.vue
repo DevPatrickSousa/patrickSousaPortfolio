@@ -17,17 +17,20 @@ const changeLanguage = (lang) => {
     <div class="d-flex text-white justify-space-between align-center" style="width: 100%;">
       <div></div>
 
-      <div class="d-flex text-white justify-center align-center" style="flex-grow: 1;" >
-        <v-btn to="/" variant="plain" :style="width < 500 ? {fontSize: '12px !important'} : {}">{{ t('menu.firstRoute') }}</v-btn>
-        <v-btn to="/aboutme" variant="plain" :style="width < 500 ? {fontSize: '12px !important'} : {}">{{ t('menu.secondRoute') }}</v-btn>
-        <v-btn to="/contact" variant="plain" :style="width < 500 ? {fontSize: '12px !important'} : {}">{{ t('menu.thirdRoute') }}</v-btn>
+      <div class="d-flex text-white justify-center align-center" style="flex-grow: 1;">
+        <v-btn to="/" variant="plain" :style="width < 500 ? { fontSize: '12px !important' } : {}">{{ t('menu.firstRoute')
+          }}</v-btn>
+        <v-btn to="/aboutme" variant="plain" :style="width < 500 ? { fontSize: '12px !important' } : {}">{{
+          t('menu.secondRoute') }}</v-btn>
+        <v-btn to="/contact" variant="plain" :style="width < 500 ? { fontSize: '12px !important' } : {}">{{
+          t('menu.thirdRoute') }}</v-btn>
       </div>
 
       <div class="pr-3">
         <v-menu>
           <template v-slot:activator="{ props }">
-            <v-btn v-bind="props">
-              <img :src="locale == 'pt'? pt : en" alt="social.description"
+            <v-btn variant="plain" v-bind="props">
+              <img :src="locale == 'pt' ? pt : en" alt="social.description"
                 :style="width > 1040 ? { maxWidth: '30px' } : { maxWidth: '30px' }">
             </v-btn>
           </template>
@@ -59,5 +62,4 @@ const changeLanguage = (lang) => {
   box-shadow: none !important;
   border: none !important;
 }
-
 </style>
