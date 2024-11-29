@@ -17,7 +17,7 @@
           variant="outlined">
         </v-textarea>
 
-        <v-btn size="small" rounded="pill" color="#7492C8" variant="outlined" class="" width="167px" height="34px"
+        <v-btn size="small" rounded="pill" color="#133B7B" variant="outlined" class="" width="167px" height="34px"
           type="submit" @click="validate">
           <span class="">{{ spanText }}</span>
         </v-btn>
@@ -65,9 +65,8 @@ export default {
 
 <style scoped>
 button:hover {
-  transform: scale(1.03);
-  transition: all 0.3s ease;
-  background-color: #7492C8;
+  transition: all 0.5s ease;
+  background-color: #17366A;
   color: white !important;
 }
 </style>
