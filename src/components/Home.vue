@@ -60,7 +60,7 @@ watch(locale, (newLocale, oldLocale) => {
   <v-container fluid class="pa-0" style="height: 100vh; width: 100vw;">
     <v-card style="height: 100%; width: 100%; border-radius: 0px;"
       :image="width < 960 ? '' : (width < 1220 ? euLessResolution : eu)"
-      :style="width < 960 ? { background: '#7492C8' } : {}">
+      :style="width < 960 ? { background: '#0E47A1', background: 'radial-gradient(at center, #0E47A1, #1E1D1D)' } : {}">
       <div class="d-flex justify-end align-center">
         <v-btn-toggle v-model="locale">
           <v-btn @click="changeLanguage('pt')">
@@ -80,7 +80,7 @@ watch(locale, (newLocale, oldLocale) => {
         style="position: relative; background: linear-gradient(to bottom, rgba(57, 0, 255, 0.4), rgba(0, 0, 0, 0.5))">
 
         <v-card-title class="text-uppercase text-h2 pt-0"
-          style="position: absolute; top: 3vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;"
+          style="position: absolute; top: 3vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 200;"
           :style="{
             top: width < 400 ? '0vh' : (width < 500 ? '60%' : ''),
 
@@ -89,15 +89,15 @@ watch(locale, (newLocale, oldLocale) => {
         </v-card-title>
 
         <v-card-subtitle class="text-body-2 text-uppercase pt-0"
-          style="position: absolute; top: 11vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 300;"
+          style="position: absolute; top: 11vh; left: 0; width: 100%; color: white; text-align: center; padding: 20px; font-weight: 200;"
           :style="{
-            top: width < 400 ? '11vh' : (width < 960 ? '8vh' : '8vh'),
+            top: width < 400 ? '11vh' : (width < 960 ? '8.5vh' : '8.5vh'),
           }">
           {{ t('home.subtitle') }}
         </v-card-subtitle>
       </div>
 
-      <div class="rounded-circle border-md border-white" v-if="width < 960"
+      <div class="rounded-circle border-md" v-if="width < 960"
         style="position: absolute; top: 22vh; left: 50%; transform: translateX(-50%);" :style="{
           top: width < 400 ? '21.5vh' : (width < 500 ? '18vh' : (width < 960 ? '18vh' : '')),
         }">
@@ -134,7 +134,9 @@ watch(locale, (newLocale, oldLocale) => {
           <v-row>
             <v-col cols="12" class="w-100">
               <span v-if="showButton == true" class="d-flex justify-center text-white" :style="{
-                fontSize: width < 500 ? '2.5vw' : (width < 960 ? '2vw' : '16px')
+                fontSize: width < 500 ? '2.5vw' : (width < 960 ? '2vw' : '16px'),
+                fontWeight: 300
+                
               }">
                 {{ t('home.music') }}
               </span>
