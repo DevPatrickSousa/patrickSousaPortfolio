@@ -16,7 +16,7 @@ import rn from '../assets/rn.webp';
 import chrome from '../assets/chrome.png';
 
 const { name, mobile, width } = useDisplay()
-const { t } = useI18n();  
+const { t } = useI18n();
 const tabFormacao = ref(null)
 const tabExperiencia = ref(null)
 const progress = ref(0)
@@ -71,26 +71,31 @@ const skillsCard = computed(() => {
 </script>
 
 <template>
-  <v-container fluid class="pt-0 pb-0">
+  <v-container fluid class="pa-0 fill-height" style="background: #182E51;">
     <v-row class="d-flex ma-0 fill-height" no-gutters>
-      <v-col cols="12" md="6" class="d-flex flex-column fill-height h-100 pr-0"
+      <v-col cols="12" md="6" class="d-flex flex-column pr-0" :class="width < 960 ? '' : ''"
         :style="width < 960 ? { marginBottom: '16px' } : {}">
-        <v-card max-width="100%" :height="skillsCard" color="black" class="" elevation="0" image="../assets/eu-card.png"
-          style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"
-          :class="width < 960 ? '' : 'v-img__img--cover'">
+        <v-card max-width="100%" :height="width < 960 ? '100%' : '100%'" color="black" class="" elevation="0"
+          image="../assets/euCard.png" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"
+          :style="width < 960 ? { background: '#0d47a1' } : {}" :class="width < 960 ? '' : 'v-img__img--cover'">
           <v-row no-gutters>
             <v-col cols="12">
-              <v-card-title class="text-center">
-                <span class="text-uppercase text-h2 text-sm-text-body-2">Patrick</span>
+              <v-card-title :class="width < 540 ? '' : 'text-center'" :style="{
+                paddingTop: width < 400 ? '60px' : (width < 500 ? '60px' : (width < 600 ? '60px' : '60px')),
+              }">
+                <span class="text-uppercase text-h2 text-sm-text-body-2" style="font-weight: 200;" :style="{
+                  fontSize: width < 400 ? '14px' : (width < 500 ? '16px' : (width < 600 ? '16px' : '16px')),
+                }">Patrick</span>
               </v-card-title>
-              <v-card-subtitle class="text-center text-uppercase text-xl-text-body-4 text-sm-text-body-1">
-               {{ t('about.subtitle') }}
+              <v-card-subtitle class="text-uppercase text-xl-text-body-4 text-sm-text-body-1" :class="width < 540 ? '' : 'text-center'"
+                style="font-weight: 200;">
+                {{ t('about.subtitle') }}
               </v-card-subtitle>
             </v-col>
           </v-row>
 
-          <v-row class="d-flex flex-column h-100" no-gutters>
-            <v-col cols="12" md="6" class="d-flex flex-column " style="height: fit-content;">
+          <v-row class="d-flex flex-column h-100 pl-2">
+            <v-col cols="12" md="6" class="d-flex flex-column fill-height" style="height: fit-content;">
               <div class="d-flex justify-start align-center" v-for="(stack, index) in stacks" :key="index"
                 style="margin-top: 2px; margin-bottom: 2px;">
                 <v-progress-circular :model-value="name === 'sm' ? progress = 100 : progress" :rotate="360"
@@ -105,7 +110,7 @@ const skillsCard = computed(() => {
                   </template>
                 </v-progress-circular>
 
-                <div class="d-flex flex-column text-white text-uppercase text-body-2">
+                <div class="d-flex flex-column text-white text-uppercase text-body-2" style="font-weight: 200;">
                   <span>{{ stack.name }}</span>
                 </div>
               </div>
@@ -114,20 +119,20 @@ const skillsCard = computed(() => {
         </v-card>
       </v-col>
 
-      <v-col md="6" class="d-flex flex-column w-100" :style="width < 960 ? { minHeight: '150px' } : {}">
+      <v-col md="6" class="d-flex flex-column w-100 min-h-100" :style="width < 960 ? { minHeight: '150px' } : {}">
         <v-row class="d-flex w-100" no-gutters>
-          <v-col md="6" class="d-flex align-stretch w-100 pl-0 pb-0" :class="width < 960 ? 'pr-3' : ''">
+          <v-col md="6" class="d-flex align-stretch w-100 h-100 pl-0 pb-0" :class="width < 960 ? 'pr-3' : ''">
             <div class="column text-white text-uppercase d-flex align-stretch w-100" style="position: relative;">
-              <v-card class="d-flex flex-column align-center justify-center text-center text-uppercase w-100"
+              <v-card class="d-flex flex-column align-center justify-center text-center text-uppercase w-100 h-100"
                 color="surface-variant" image="../assets/book-opac.jpg" style="border-radius: 0px;"
                 :style="width < 960 ? { borderRadius: '4px' } : {}">
                 <template v-slot:title>
                   <span class="text-uppercase text-h5" :class="width < 960 ? 'text-h6' : ''"
-                    style="font-weight: 300;">{{ t('about.firstCard') }}</span>
+                    style="font-weight: 200;">{{ t('about.firstCard.title') }}</span>
                 </template>
                 <template v-slot:actions>
                   <v-btn class="text-uppercase" color="white" variant="outlined" block @click="formacaoDialog = true"
-                    style="font-weight: 300;">
+                    style="font-weight: 200;">
                     {{ t('about.buttons.moreDetails') }}
                   </v-btn>
                 </template>
@@ -144,11 +149,11 @@ const skillsCard = computed(() => {
                 :style="width < 960 ? { borderRadius: '4px' } : {}">
                 <template v-slot:title>
                   <span class="text-uppercase text-h5" :class="width < 960 ? 'text-h6' : ''"
-                    style="font-weight: 300;">{{ t('about.secondCard') }}</span>
+                    style="font-weight: 200;">{{ t('about.secondCard.title') }}</span>
                 </template>
                 <template v-slot:actions>
                   <v-btn class="text-uppercase" color="white" variant="outlined" block @click="experienciaDialog = true"
-                    style="font-weight: 300;">
+                    style="font-weight: 200;">
                     {{ t('about.buttons.moreDetails') }}
                   </v-btn>
                 </template>
@@ -169,9 +174,10 @@ const skillsCard = computed(() => {
                       :style="name === 'md' || name === 'sm' ? { borderRadius: '4px' } : { borderBottomRightRadius: '4px' }"
                       style="top: 0;">
                       <span class="text-h5 text-white text-uppercase px-4" :class="width < 960 ? 'text-h6' : ''"
-                        style="font-weight: 300; padding-top: 10px; padding-bottom: 10px;">{{ item.description }}</span>
+                        style="font-weight: 300; padding-top: 10px; padding-bottom: 10px; font-weight: 200;">{{
+                          item.description }}</span>
                       <v-btn class="text-uppercase pa-2" color="white" variant="outlined"
-                        @click="openProjectsDialog(index)" style="font-weight: 300;">
+                        @click="openProjectsDialog(index)" style="font-weight: 200;">
                         {{ t('about.buttons.moreDetails') }}
                       </v-btn>
                     </div>
@@ -237,8 +243,12 @@ const skillsCard = computed(() => {
         style="bottom: 0; background: rgba(255, 255, 255, 1);">
         <v-tabs v-model="tabFormacao" class="d-flex justify-between"
           style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1));">
-          <v-tab value="fatec" class="text-white flex-grow-1 text-center">FATEC</v-tab>
-          <v-tab value="senai" class="text-white flex-grow-1 text-center">SENAI</v-tab>
+          <v-tab value="fatec" class="text-white flex-grow-1 text-center">{{
+            t('about.firstCard.details.fatecDetails.name')
+          }}</v-tab>
+          <v-tab value="senai" class="text-white flex-grow-1 text-center">{{
+            t('about.firstCard.details.senaiDetails.name')
+          }}</v-tab>
         </v-tabs>
 
         <v-card-text class="pb-0 px-0">
@@ -257,21 +267,22 @@ const skillsCard = computed(() => {
                 <v-tabs-window-item value="fatec">
                   <v-row align="center">
                     <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">Curso:</span>
+                      <span class="text-body-2 px-2">{{ t('about.firstCard.details.fatecDetails.firstRowKey') }}</span>
                     </v-col>
 
                     <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2 text-center">ADS</span>
+                      <span class="text-body-2 text-center">{{ t('about.firstCard.details.fatecDetails.firstRowValue')
+                        }}</span>
                     </v-col>
                   </v-row>
 
                   <v-row align="center" class="mt-0">
                     <v-col cols="6" style="border-right: 4.5px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">Período:</span>
+                      <span class="text-body-2 px-2">{{ t('about.firstCard.details.fatecDetails.secondRowKey') }}</span>
                     </v-col>
 
                     <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2">01/2020 - 11/2024</span>
+                      <span class="text-body-2">{{ t('about.firstCard.details.fatecDetails.secondRowValue') }}</span>
                     </v-col>
                   </v-row>
 
@@ -279,10 +290,8 @@ const skillsCard = computed(() => {
 
                   <v-row>
                     <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 px-2 py-1">Curso superior em análise e desenvolvimento de
-                        sistemas
-                        realizado na instituição FATEC SPB.
-                      </span>
+                      <span class="text-body-2 px-2 py-1">{{ t('about.firstCard.details.fatecDetails.description')
+                        }}</span>
                     </v-col>
                   </v-row>
                 </v-tabs-window-item>
@@ -290,21 +299,21 @@ const skillsCard = computed(() => {
                 <v-tabs-window-item value="senai">
                   <v-row align="center">
                     <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">Curso:</span>
+                      <span class="text-body-2 px-2">{{ t('about.firstCard.details.senaiDetails.firstRowKey') }}</span>
                     </v-col>
 
                     <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2 ">Eletromecânica</span>
+                      <span class="text-body-2 ">{{ t('about.firstCard.details.senaiDetails.firstRowValue') }}</span>
                     </v-col>
                   </v-row>
 
                   <v-row align="center" class="mt-0">
                     <v-col style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">Período:</span>
+                      <span class="text-body-2 px-2">{{ t('about.firstCard.details.senaiDetails.secondRowKey') }}</span>
                     </v-col>
 
                     <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2">01/2020 - 11/2024</span>
+                      <span class="text-body-2">{{ t('about.firstCard.details.senaiDetails.secondRowValue') }}</span>
                     </v-col>
                   </v-row>
 
@@ -312,9 +321,8 @@ const skillsCard = computed(() => {
 
                   <v-row>
                     <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 text-justify px-2 py-1">Curso técnico em eletromecânica realizado na
-                        instituição SENAI
-                        Suzana Dias.</span>
+                      <span class="text-body-2 text-justify px-2 py-1">{{
+                        t('about.firstCard.details.senaiDetails.description') }}</span>
                     </v-col>
                   </v-row>
                 </v-tabs-window-item>
@@ -325,7 +333,7 @@ const skillsCard = computed(() => {
 
         <v-card-actions class="mt-auto pa-3">
           <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
-            @click="formacaoDialog = false" style="font-weight: 300;">
+            @click="formacaoDialog = false" style="font-weight: 200;">
             {{ t('about.buttons.lessDetails') }}
           </v-btn>
         </v-card-actions>
@@ -442,7 +450,7 @@ const skillsCard = computed(() => {
 
         <v-card-actions class="mt-auto pa-3">
           <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
-            @click="experienciaDialog = false" style="font-weight: 300;">
+            @click="experienciaDialog = false" style="font-weight: 200;">
             {{ t('about.buttons.lessDetails') }}
           </v-btn>
         </v-card-actions>
