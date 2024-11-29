@@ -85,7 +85,7 @@ export default createI18n({
           snackBarText: 'Formulário enviado com sucesso!',
           rules: {
             required: 'Obrigatório.',
-            invalidEmail: 'Email inválido',
+            invalidEmail: 'Email inválido.',
             minCharacters: 'Mínimo de 3 caracteres.',
             maxCharacters: 'máximo de 50 caracteres.'
           }
