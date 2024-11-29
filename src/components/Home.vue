@@ -233,4 +233,7 @@ watch(locale, (newLocale, oldLocale) => {
   transform: scale(1.05);
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
+.v-list-item .v-btn:hover, .v-btn:active,.v-btn:focus{
+  background-color: none !important;
+}
 </style>
