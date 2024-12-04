@@ -68,7 +68,7 @@ const validate = async () => {
           required rounded variant="outlined">
         </v-textarea>
 
-        <v-btn :loading="buttonLoading" size="small" rounded="pill" color="#133B7B" variant="outlined" class=""
+        <v-btn :loading="buttonLoading" size="small" rounded="pill" color="#0E47A1" variant="outlined" class=""
           width="167px" height="34px" type="submit">
           <span>{{ t('contact.form.formButton') }}</span>
         </v-btn>
