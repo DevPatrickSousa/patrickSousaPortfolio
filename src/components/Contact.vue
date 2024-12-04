@@ -40,7 +40,7 @@ const socials = reactive([
 
       <v-col sm="12" md="4" lg="4" class="d-flex justify-center align-center text-center">
         <v-card class="rounded-xl" :width="width > 1040 ? 400 : 300" elevation="16">
-          <v-card-title style=" background-color: #17366A;">
+          <v-card-title style="background-color: #192B4C;">
             <span v-if="width > 1040" class="text-h6 text-white" style="font-weight: 300;">{{ t('contact.cardTitle') }}</span>
             <span v-if="width < 1040" class="text-h6 text-white" style="font-weight: 300;">{{ t('contact.cardTitleMobile') }}</span>
           </v-card-title>
