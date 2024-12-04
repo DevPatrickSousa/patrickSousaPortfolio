@@ -17,14 +17,15 @@ import chrome from '../assets/chrome.png';
 
 const { name, mobile, width } = useDisplay()
 const { t } = useI18n();
-const tabFormacao = ref(null)
-const tabExperiencia = ref(null)
+const tabFormacao = ref('fatec')
+const tabExperiencia = ref('skyler')
 const progress = ref(0)
 const interval = ref(-1)
 const formacaoDialog = ref(false)
 const experienciaDialog = ref(false)
 const projetosDialog = ref(false)
-const activeIndex = ref(null);
+const activeIndex = ref(null)
+const showCardFullDetails = ref(false)
 const items = ref([
   { src: flightSearch, description: 'flight search' },
   { src: flightInfo, description: 'flight info' },
@@ -87,8 +88,8 @@ const skillsCard = computed(() => {
                   fontSize: width < 400 ? '14px' : (width < 500 ? '16px' : (width < 600 ? '16px' : '16px')),
                 }">Patrick</span>
               </v-card-title>
-              <v-card-subtitle class="text-uppercase text-xl-text-body-4 text-sm-text-body-1" :class="width < 540 ? '' : 'text-center'"
-                style="font-weight: 200;">
+              <v-card-subtitle class="text-uppercase text-xl-text-body-4 text-sm-text-body-1"
+                :class="width < 540 ? '' : 'text-center'" style="font-weight: 200;">
                 {{ t('about.subtitle') }}
               </v-card-subtitle>
             </v-col>
@@ -184,49 +185,49 @@ const skillsCard = computed(() => {
 
                     <v-dialog v-model="projetosDialog" max-width="500"
                       :style="width < 960 ? { maxWidth: '400px' } : {}">
-                      <v-card v-if="activeIndex === 0" class="w-100 h-100 d-flex flex-column" width="500"
+                      <v-card v-if="activeIndex === 0" class="w-100 h-100 d-flex flex-column rounded-xl" width="500"
                         style="top: 0; background-color: white;">
-                        <v-card-text class="text-center text-black">
-                          <h2 class="text-h5">index 0</h2>
-                          <p class="text-medium-emphasis">
+                        <v-card-text class="d-flex justify-center align-center text-center text-black">
+                          <h2 class="text-h5">In progress...</h2>
+                          <!-- <p class="text-medium-emphasis">
                             0.
-                          </p>
+                          </p> -->
                         </v-card-text>
-                        <v-card-actions class="justify-center">
+                        <!-- <v-card-actions class="justify-center">
                           <v-btn color="primary" class="text-uppercase" @click="projetosDialog = false">
                             {{ t('about.buttons.lessDetails') }}
                           </v-btn>
-                        </v-card-actions>
+                        </v-card-actions> -->
                       </v-card>
 
-                      <v-card v-if="activeIndex === 1" class="w-100 h-100 d-flex flex-column" width="500"
+                      <v-card v-if="activeIndex === 1" class="w-100 h-100 d-flex flex-column rounded-xl" width="500"
                         style="top: 0; background-color: white;">
-                        <v-card-text class="text-center text-white">
-                          <h2 class="text-h5 text-black">index 1</h2>
-                          <p class="text-medium-emphasis">
+                        <v-card-text class="d-flex justify-center align-center text-center text-white">
+                          <h2 class="text-h5 text-black">In progress...</h2>
+                          <!-- <p class="text-medium-emphasis">
                             1.
-                          </p>
+                          </p> -->
                         </v-card-text>
-                        <v-card-actions class="justify-center">
+                        <!-- <v-card-actions class="justify-center">
                           <v-btn color="primary" class="text-uppercase" @click="projetosDialog = false">
                             {{ t('about.buttons.lessDetails') }}
                           </v-btn>
-                        </v-card-actions>
+                        </v-card-actions> -->
                       </v-card>
 
-                      <v-card v-if="activeIndex === 2" class="w-100 h-100 d-flex flex-column" width="500"
+                      <v-card v-if="activeIndex === 2" class="w-100 h-100 d-flex flex-column rounded-xl" width="500"
                         style="top: 0; background-color: white;">
-                        <v-card-text class="text-center text-white">
-                          <h2 class="text-h5 text-black">index 2</h2>
-                          <p class="text-medium-emphasis">
+                        <v-card-text class="d-flex justify-center align-center text-center text-white">
+                          <h2 class="text-h5 text-black">In progress...</h2>
+                          <!-- <p class="text-medium-emphasis">
                             2.
-                          </p>
+                          </p> -->
                         </v-card-text>
-                        <v-card-actions class="justify-center">
+                        <!-- <v-card-actions class="justify-center">
                           <v-btn color="primary" class="text-uppercase" @click="projetosDialog = false">
                             {{ t('about.buttons.lessDetails') }}
                           </v-btn>
-                        </v-card-actions>
+                        </v-card-actions> -->
                       </v-card>
                     </v-dialog>
                   </template>
@@ -239,201 +240,191 @@ const skillsCard = computed(() => {
     </v-row>
     <!-- formacao dialog-->
     <v-dialog v-model="formacaoDialog" max-width="500" :style="name === 'md' ? { maxWidth: '400px' } : {}">
-      <v-card class="w-100 h-100 d-flex flex-column " width="500"
-        style="bottom: 0; background: rgba(255, 255, 255, 1);">
-        <v-tabs v-model="tabFormacao" class="d-flex justify-between"
-          style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1));">
-          <v-tab value="fatec" class="text-white flex-grow-1 text-center">{{
-            t('about.firstCard.details.fatecDetails.name')
-          }}</v-tab>
-          <v-tab value="senai" class="text-white flex-grow-1 text-center">{{
-            t('about.firstCard.details.senaiDetails.name')
-          }}</v-tab>
-        </v-tabs>
+      <v-row no-gutters="">
+        <v-col cols="12">
+          <v-card style="background: rgba(255, 255, 255, 1);" class="rounded-xl">
+            <v-card-title class="d-flex justify-space-between">
+              <div>
+                <v-btn density="default" icon="mdi-swap-horizontal"
+                  @click="tabFormacao = tabFormacao === 'fatec' ? 'senai' : 'fatec'"></v-btn>
+              </div>
 
-        <v-card-text class="pb-0 px-0">
-          <v-row>
-            <v-col cols="12" class="py-0">
-              <v-img v-if="tabFormacao == 'fatec'" width="100%" aspect-ratio="16/9" cover style="max-height: 185px;"
-                src="../assets/fatec.png"></v-img>
-              <v-img v-if="tabFormacao == 'senai'" width="100%" aspect-ratio="16/9" cover style="max-height: 185px;"
-                src="../assets/senai.jpg"></v-img>
-            </v-col>
-            <v-divider :thickness="5" class=" px-3"></v-divider>
-          </v-row>
-          <v-row>
-            <v-col cols="12" class="py-0">
-              <v-tabs-window v-model="tabFormacao">
-                <v-tabs-window-item value="fatec">
-                  <v-row align="center">
-                    <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">{{ t('about.firstCard.details.fatecDetails.firstRowKey') }}</span>
-                    </v-col>
+              <div class="rounded-circle border-md">
+                <v-img v-if="tabFormacao == 'fatec'" :width="width < 400 ? 200 : '200px'"
+                  :height="width < 400 ? 200 : '200px'" aspect-ratio="16/9" cover class="rounded-circle"
+                  src="../assets/logoFatec.jpg"></v-img>
 
-                    <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2 text-center">{{ t('about.firstCard.details.fatecDetails.firstRowValue')
-                        }}</span>
-                    </v-col>
-                  </v-row>
+                <v-img v-if="tabFormacao == 'senai'" :width="width < 400 ? 200 : '200px'"
+                  :height="width < 400 ? 200 : '200px'" aspect-ratio="16/9" cover class="rounded-circle"
+                  src="../assets/senaiLogo.jpg"></v-img>
+              </div>
 
-                  <v-row align="center" class="mt-0">
-                    <v-col cols="6" style="border-right: 4.5px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">{{ t('about.firstCard.details.fatecDetails.secondRowKey') }}</span>
-                    </v-col>
+              <v-btn density="default" :icon="showCardFullDetails ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                @click="showCardFullDetails = !showCardFullDetails"></v-btn>
+            </v-card-title>
 
-                    <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2">{{ t('about.firstCard.details.fatecDetails.secondRowValue') }}</span>
-                    </v-col>
-                  </v-row>
+            <v-card-text>
+              <v-row>
+                <v-col cols=6>
+                  <v-card elevation="16">
+                    <v-card-title style="background-color: #192B4C;" class="text-center">
+                      <span class="text-body-2 px-2 text-white text-center">
+                        {{ tabFormacao === 'fatec' ?
+                          t('about.firstCard.details.fatecDetails.firstRowKey')
+                          :
+                          t('about.firstCard.details.senaiDetails.firstRowKey') }}
+                      </span>
+                    </v-card-title>
+                  </v-card>
+                </v-col>
 
-                  <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
+                <v-col cols=6>
+                  <v-card>
+                    <v-card-title style="background-color: #192B4C;" class="text-center">
+                      <span class="text-body-2 px-2 text-white">{{ tabFormacao === 'fatec' ?
+                        t('about.firstCard.details.fatecDetails.secondRowKey')
+                        :
+                        t('about.firstCard.details.senaiDetails.secondRowKey') }}</span>
+                    </v-card-title>
+                  </v-card>
+                </v-col>
+              </v-row>
 
-                  <v-row>
-                    <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 px-2 py-1">{{ t('about.firstCard.details.fatecDetails.description')
-                        }}</span>
-                    </v-col>
-                  </v-row>
-                </v-tabs-window-item>
+              <v-row no-gutters>
+                <v-col cols=6 class="pr-3">
+                  <v-card elevation="0">
+                    <v-card-title class="text-center">
+                      <span class="text-body-2 px-2"> {{ tabFormacao === 'fatec' ?
+                        t('about.firstCard.details.fatecDetails.firstRowValue')
+                        :
+                        t('about.firstCard.details.senaiDetails.firstRowValue') }}
+                      </span>
+                    </v-card-title>
+                  </v-card>
+                </v-col>
 
-                <v-tabs-window-item value="senai">
-                  <v-row align="center">
-                    <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">{{ t('about.firstCard.details.senaiDetails.firstRowKey') }}</span>
-                    </v-col>
+                <v-col cols=6 class="pl-3">
+                  <v-card elevation="0">
+                    <v-card-title class="text-center">
+                      <span class="text-body-2 px-2">{{ tabFormacao === 'fatec' ?
+                        t('about.firstCard.details.fatecDetails.secondRowValue')
+                        :
+                        t('about.firstCard.details.senaiDetails.secondRowValue') }}
+                      </span>
+                    </v-card-title>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-card-text>
 
-                    <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2 ">{{ t('about.firstCard.details.senaiDetails.firstRowValue') }}</span>
-                    </v-col>
-                  </v-row>
-
-                  <v-row align="center" class="mt-0">
-                    <v-col style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">{{ t('about.firstCard.details.senaiDetails.secondRowKey') }}</span>
-                    </v-col>
-
-                    <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2">{{ t('about.firstCard.details.senaiDetails.secondRowValue') }}</span>
-                    </v-col>
-                  </v-row>
-
-                  <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
-
-                  <v-row>
-                    <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 text-justify px-2 py-1">{{
-                        t('about.firstCard.details.senaiDetails.description') }}</span>
-                    </v-col>
-                  </v-row>
-                </v-tabs-window-item>
-              </v-tabs-window>
-            </v-col>
-          </v-row>
-        </v-card-text>
-
-        <v-card-actions class="mt-auto pa-3">
-          <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
-            @click="formacaoDialog = false" style="font-weight: 400;">
-            {{ t('about.buttons.lessDetails') }}
-          </v-btn>
-        </v-card-actions>
-      </v-card>
+            <v-expand-transition>
+              <div v-show="showCardFullDetails == true">
+                <v-divider></v-divider>
+                <v-card-text>
+                  <span class="text-center">{{ tabFormacao === 'fatec' ?
+                    t('about.firstCard.details.fatecDetails.description')
+                    :
+                    t('about.firstCard.details.senaiDetails.description') }}</span>
+                </v-card-text>
+              </div>
+            </v-expand-transition>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-dialog>
-
     <!-- experience dialog-->
     <v-dialog v-model="experienciaDialog" max-width="500" :style="name === 'md' ? { maxWidth: '400px' } : {}">
-      <v-card class="w-100 h-100 d-flex flex-column " width="500"
-        style="bottom: 0; background: rgba(255, 255, 255, 1);">
-        <v-tabs v-model="tabExperiencia" class="d-flex justify-between"
-          style="background: linear-gradient(to right, rgba(13, 71, 161, 1), rgba(255, 255, 255, 0.1));">
-          <v-tab value="skyler" class="text-white flex-grow-1 text-center">{{ t('about.secondCard.details.skylerDetails.name') }}</v-tab>
-          <v-tab value="prefeitura" class="text-white flex-grow-1 text-center">{{ t('about.secondCard.details.spbDetails.name') }}</v-tab>
-        </v-tabs>
+      <v-row no-gutters="">
+        <v-col cols="12">
+          <v-card style="background: rgba(255, 255, 255, 1);" class="rounded-xl">
+            <v-card-title class="d-flex justify-space-between">
+              <div>
+                <v-btn density="default" icon="mdi-swap-horizontal"
+                  @click="tabExperiencia = tabExperiencia === 'skyler' ? 'prefeitura' : 'skyler'"></v-btn>
+              </div>
 
-        <v-card-text class="pb-0 px-0">
-          <v-row>
-            <v-col cols="12" class="py-0">
-              <v-img v-if="tabExperiencia == 'skyler'" width="100%" aspect-ratio="16/9" cover style="max-height: 185px;"
-                src="../assets/skyler.png"></v-img>
-              <v-img v-if="tabExperiencia == 'prefeitura'" width="100%" aspect-ratio="16/9" cover
-                style="max-height: 185px;" src="../assets/spb.png"></v-img>
-            </v-col>
-            <v-divider :thickness="5" class=" px-3"></v-divider>
-          </v-row>
-          <v-row>
-            <v-col cols="12" class="py-0">
-              <v-tabs-window v-model="tabExperiencia">
-                <v-tabs-window-item value="skyler">
-                  <v-row align="center">
-                    <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">{{ t('about.secondCard.details.skylerDetails.firstRowKey') }}</span>
-                    </v-col>
+              <div class="rounded-circle border-md">
+                <v-img v-if="tabExperiencia == 'skyler'" :width="width < 400 ? 200 : '200px'"
+                  :height="width < 400 ? 200 : '200px'" aspect-ratio="16/9" cover class="rounded-circle"
+                  src="../assets/skylerLogo.webp"></v-img>
 
-                    <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2 text-center">{{ t('about.secondCard.details.skylerDetails.firstRowValue') }}</span>
-                    </v-col>
-                  </v-row>
+                <v-img v-if="tabExperiencia == 'prefeitura'" :width="width < 400 ? 200 : '200px'"
+                  :height="width < 400 ? 200 : '200px'" aspect-ratio="16/9" cover class="rounded-circle"
+                  src="../assets/prefeituraLogo.png"></v-img>
+              </div>
 
-                  <v-row align="center" class="mt-0">
-                    <v-col cols="6" style="border-right: 4.5px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">{{ t('about.secondCard.details.skylerDetails.secondRowKey') }}</span>
-                    </v-col>
+              <v-btn density="default" :icon="showCardFullDetails ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                @click="showCardFullDetails = !showCardFullDetails"></v-btn>
+            </v-card-title>
 
-                    <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2">{{ t('about.secondCard.details.skylerDetails.secondRowValue') }}</span>
-                    </v-col>
-                  </v-row>
+            <v-card-text>
+              <v-row>
+                <v-col cols=6>
+                  <v-card elevation="16">
+                    <v-card-title style="background-color: #192B4C;" class="text-center">
+                      <span class="text-body-2 px-2 text-white text-center">
+                        {{ tabExperiencia === 'skyler' ?
+                          t('about.secondCard.details.skylerDetails.firstRowKey')
+                          :
+                          t('about.secondCard.details.spbDetails.firstRowKey') }}
+                      </span>
+                    </v-card-title>
+                  </v-card>
+                </v-col>
 
-                  <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
+                <v-col cols=6>
+                  <v-card>
+                    <v-card-title style="background-color: #192B4C;" class="text-center">
+                      <span class="text-body-2 px-2 text-white">{{ tabExperiencia === 'skyler' ?
+                        t('about.secondCard.details.skylerDetails.secondRowKey')
+                        :
+                        t('about.secondCard.details.spbDetails.secondRowKey') }}</span>
+                    </v-card-title>
+                  </v-card>
+                </v-col>
+              </v-row>
 
-                  <v-row>
-                    <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 px-2 py-1">{{ t('about.secondCard.details.skylerDetails.description') }}</span>
-                    </v-col>
-                  </v-row>
-                </v-tabs-window-item>
+              <v-row no-gutters>
+                <v-col cols=6 class="pr-3">
+                  <v-card elevation="0">
+                    <v-card-title class="text-center">
+                      <span class="text-body-2 px-2"> {{ tabExperiencia === 'skyler' ?
+                        t('about.secondCard.details.skylerDetails.firstRowValue')
+                        :
+                        t('about.secondCard.details.spbDetails.firstRowValue') }}
+                      </span>
+                    </v-card-title>
+                  </v-card>
+                </v-col>
 
-                <v-tabs-window-item value="prefeitura">
-                  <v-row align="center">
-                    <v-col cols="6" style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">{{ t('about.secondCard.details.spbDetails.firstRowKey') }}</span>
-                    </v-col>
+                <v-col cols=6 class="pl-3">
+                  <v-card elevation="0">
+                    <v-card-title class="text-center">
+                      <span class="text-body-2 px-2">{{ tabExperiencia === 'skyler' ?
+                        t('about.secondCard.details.skylerDetails.secondRowValue')
+                        :
+                        t('about.secondCard.details.spbDetails.secondRowValue') }}
+                      </span>
+                    </v-card-title>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-card-text>
 
-                    <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2 ">{{ t('about.secondCard.details.spbDetails.firstRowValue') }}</span>
-                    </v-col>
-                  </v-row>
-
-                  <v-row align="center" class="mt-0">
-                    <v-col style="border-right: 4px solid rgba(0, 0, 0, 0.12);">
-                      <span class="text-body-2 px-2">{{ t('about.secondCard.details.spbDetails.secondRowKey') }}</span>
-                    </v-col>
-
-                    <v-col cols="6" class="d-flex justify-center">
-                      <span class="text-body-2">{{ t('about.secondCard.details.spbDetails.secondRowValue') }}</span>
-                    </v-col>
-                  </v-row>
-
-                  <v-divider :thickness="5" class="mt-2 px-3"></v-divider>
-
-                  <v-row>
-                    <v-col cols="12" class="d-flex justify-center">
-                      <span class="text-body-2 text-justify px-2 py-1">{{ t('about.secondCard.details.spbDetails.description') }}</span>
-                    </v-col>
-                  </v-row>
-                </v-tabs-window-item>
-              </v-tabs-window>
-            </v-col>
-          </v-row>
-        </v-card-text>
-
-        <v-card-actions class="mt-auto pa-3">
-          <v-btn class="text-uppercase pa-3" append-icon="mdi-chevron-right" color="#0d47a1" variant="outlined" block
-            @click="experienciaDialog = false" style="font-weight: 400;">
-            {{ t('about.buttons.lessDetails') }}
-          </v-btn>
-        </v-card-actions>
-      </v-card>
+            <v-expand-transition>
+              <div v-show="showCardFullDetails == true">
+                <v-divider></v-divider>
+                <v-card-text>
+                  <span class="text-center">{{ tabExperiencia === 'skyler' ?
+                    t('about.secondCard.details.skylerDetails.description')
+                    :
+                    t('about.secondCard.details.spbDetails.description') }}</span>
+                </v-card-text>
+              </div>
+            </v-expand-transition>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-dialog>
   </v-container>
 </template>
@@ -466,5 +457,10 @@ const skillsCard = computed(() => {
 button:hover {
   transform: scale(1.03);
   transition: all 0.3s ease;
+}
+
+.border-md {
+  border-color: #1E1D1D !important;
+  border-width: 4px !important;
 }
 </style>
