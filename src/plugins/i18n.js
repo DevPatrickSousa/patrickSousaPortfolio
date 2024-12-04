@@ -32,14 +32,14 @@ export default createI18n({
               firstRowValue: 'ADS',
               secondRowKey: 'Periodo',
               secondRowValue: '01/2020 - 11/2024',
-              description: 'Curso superior em análise e desenvolvimento de sistemas realizado na instituição FATEC SPB.'
+              description: 'Curso superior em Análise e Desenvolvimento de Sistemas realizado na instituição FATEC SPB.'
             },
             senaiDetails: {
               name: 'SENAI',
               firstRowKey: 'Curso',
               firstRowValue: 'Eletromecânica',
               secondRowKey: 'Periodo',
-              secondRowValue: '01/2020 - 11/2024',
+              secondRowValue: '01/2018 - 12/2019',
               description: 'Curso técnico em eletromecânica realizado na instituição SENAI Suzana Dias.'
             }
           }
@@ -126,7 +126,7 @@ export default createI18n({
               firstRowKey: 'Course',
               firstRowValue: 'Electromechanics',
               secondRowKey: 'Duration',
-              secondRowValue: '01/2020 - 11/2024',
+              secondRowValue: '01/2018 - 12/2019',
               description: 'Technical course in Electromechanics completed at SENAI Suzana Dias.'
             }
           }
